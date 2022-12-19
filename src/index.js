@@ -18,11 +18,11 @@ app.use(Sentry.Handlers.tracingHandler())
 app.use(express.json())
 
 app.get('/', (req, res) => {
-  const { iamGroups = [] } = req.body
+  const { userId, iamGroups = [] } = req.body
 
   const { access } = getIAMRights(iamGroups)
 
-  logger.info('IAM authentication', { iamGroups, access })
+  logger.info('IAM authentication', { userId, iamGroups, access })
 
   res.send(access)
 })
