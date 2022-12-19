@@ -1,12 +1,21 @@
 const express = require('express')
+const logger = require('./util/logger')
 
 const { PORT } = require('./util/config')
-const logger = require('./util/logger')
+const { getIAMRights } = require('./auth/IAMRights')
 
 const app = express()
 
+app.use(express.json())
+
 app.get('/', (req, res) => {
-  res.send('Hello, World!')
+  const { iamGroups = [] } = req.body
+
+  const { access } = getIAMRights(iamGroups)
+
+  logger.info('IAM authentication', { iamGroups, access })
+
+  res.send(access)
 })
 
 app.listen(PORT, () => {
