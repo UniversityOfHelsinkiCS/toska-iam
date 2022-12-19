@@ -7,6 +7,7 @@ const logger = require('./util/logger')
 const { getIAMRights } = require('./auth/IAMRights')
 
 const errorHandler = require('./middleware/errors')
+const accessLogger = require('./middleware/access')
 
 initializeSentry()
 
@@ -16,9 +17,15 @@ app.use(Sentry.Handlers.requestHandler())
 app.use(Sentry.Handlers.tracingHandler())
 
 app.use(express.json())
+app.use(accessLogger)
 
-app.get('/', (req, res) => {
-  const { userId, iamGroups = [] } = req.body
+app.get('/', (_req, res) => {
+  res.send('pong')
+})
+
+app.post('/', (req, res) => {
+  console.log('Request')
+  const { userId, iamGroups = [] } = req.params
 
   const { access } = getIAMRights(iamGroups)
 
