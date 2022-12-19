@@ -1,7 +1,7 @@
 const express = require('express')
 const logger = require('./util/logger')
 
-const { PORT } = require('./util/config')
+const { PORT, ENV } = require('./util/config')
 const { getIAMRights } = require('./auth/IAMRights')
 
 const app = express()
@@ -19,5 +19,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(PORT, () => {
-  logger.info(`Started on port ${PORT}`)
+  logger.info(`Started on port ${PORT} with environment ${ENV}`)
 })
