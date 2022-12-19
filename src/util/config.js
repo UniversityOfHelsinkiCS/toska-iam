@@ -1,9 +1,10 @@
 require('dotenv').config()
 
 const PORT = process.env.PORT
-const ENV = process.env.NODE_ENV
+
+const inProduction = process.env.NODE_ENV === 'production'
 
 module.exports = {
   PORT,
-  ENV,
+  inProduction,
 }

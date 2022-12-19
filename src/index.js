@@ -1,10 +1,19 @@
 const express = require('express')
-const logger = require('./util/logger')
+const Sentry = require('@sentry/node')
 
-const { PORT, ENV } = require('./util/config')
+const { PORT, inProduction } = require('./util/config')
+const initializeSentry = require('./util/sentry')
+const logger = require('./util/logger')
 const { getIAMRights } = require('./auth/IAMRights')
 
+const errorHandler = require('./middleware/errors')
+
+initializeSentry()
+
 const app = express()
+
+app.use(Sentry.Handlers.requestHandler())
+app.use(Sentry.Handlers.tracingHandler())
 
 app.use(express.json())
 
@@ -18,6 +27,17 @@ app.get('/', (req, res) => {
   res.send(access)
 })
 
+app.get('/sentry', () => {
+  throw new Error('Testing Sentry')
+})
+
+app.use(Sentry.Handlers.errorHandler())
+app.use(errorHandler)
+
 app.listen(PORT, () => {
-  logger.info(`Started on port ${PORT} with environment ${ENV}`)
+  logger.info(
+    `Started on port ${PORT} with environment ${
+      inProduction ? 'production' : 'development'
+    }`,
+  )
 })

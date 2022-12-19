@@ -1,16 +1,14 @@
 const winston = require('winston')
 
-const { ENV } = require('./config')
+const { inProduction } = require('./config')
 
 const { combine, timestamp, printf, splat } = winston.format
 
 const transports = []
 
-if (ENV !== 'test') {
-  transports.push(new winston.transports.File({ filename: 'debug.log' }))
-}
+transports.push(new winston.transports.File({ filename: 'debug.log' }))
 
-if (ENV !== 'production') {
+if (!inProduction) {
   const devFormat = printf(
     ({ level, message, timestamp, ...rest }) =>
       `${timestamp} ${level}: ${message} ${JSON.stringify(rest)}`,
