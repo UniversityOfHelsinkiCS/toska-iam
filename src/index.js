@@ -17,7 +17,8 @@ app.use(Sentry.Handlers.requestHandler())
 app.use(Sentry.Handlers.tracingHandler())
 
 app.use(express.json())
-app.use(accessLogger)
+
+if (!inProduction) app.use(accessLogger)
 
 app.get('/', (_req, res) => {
   res.send('pong')
@@ -28,7 +29,8 @@ app.post('/', (req, res) => {
 
   const { access } = getIAMRights(iamGroups)
 
-  logger.info('IAM authentication', { userId, iamGroups, access })
+  if (Object.keys(access).length !== 0)
+    logger.info('IAM authentication', { userId, iamGroups, access })
 
   res.send(access)
 })
