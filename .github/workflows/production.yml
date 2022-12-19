@@ -23,7 +23,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          tags: toska/toska-iam:latest
+          tags: toska/jami:latest
           push: true
           build-args: |
             NODE_ENV=production
@@ -36,10 +36,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Pull image and create a container
-        run: docker create --name toska-iam toska/toska-iam:latest
+        run: docker create --name jami toska/jami:latest
 
       - name: Copy assets from the container
-        run: docker cp toska-iam:/usr/src/app/ ./app
+        run: docker cp jami:/usr/src/app/ ./app
 
       - name: Create Sentry release
         uses: getsentry/action-release@v1

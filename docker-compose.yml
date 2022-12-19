@@ -5,9 +5,9 @@ services:
     build:
       context: ./
       dockerfile: dev.Dockerfile
-    image: toska-iam-dev
+    image: jami_dev
     volumes:
       - ./:/usr/src/app
     ports:
       - 3000:3000
-    container_name: toska-iam-dev
+    container_name: jami_dev
