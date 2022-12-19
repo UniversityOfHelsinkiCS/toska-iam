@@ -27,10 +27,6 @@ app.get('/', (req, res) => {
   res.send(access)
 })
 
-app.get('/sentry', () => {
-  throw new Error('Testing Sentry')
-})
-
 app.use(Sentry.Handlers.errorHandler())
 app.use(errorHandler)
 
