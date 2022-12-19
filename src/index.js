@@ -24,8 +24,7 @@ app.get('/', (_req, res) => {
 })
 
 app.post('/', (req, res) => {
-  console.log('Request')
-  const { userId, iamGroups = [] } = req.params
+  const { userId, iamGroups = [] } = req.body
 
   const { access } = getIAMRights(iamGroups)
 
