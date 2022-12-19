@@ -13,3 +13,13 @@ e.g. POST
   "noLogging": false
 }
 ```
+Response 
+```json
+{
+  "500-M009": {
+    "read": true,
+    "write": true,
+    "admin": true
+  }
+}
+```
