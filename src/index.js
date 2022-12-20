@@ -30,7 +30,7 @@ app.post('/', (req, res) => {
 
   const { access } = getIAMRights(iamGroups)
 
-  if (noLogging && Object.keys(access).length !== 0)
+  if (!noLogging && Object.keys(access).length !== 0)
     logger.info('IAM authentication', { userId, iamGroups, access })
 
   res.send(access)
