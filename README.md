@@ -9,8 +9,7 @@ e.g. POST
   "iamGroups": [
     "hy-employees",
     "grp-toska"
-  ],
-  "noLogging": false
+  ]
 }
 ```
 Response 
