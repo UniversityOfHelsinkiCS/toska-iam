@@ -27,13 +27,13 @@ app.get('/ping', (_req, res) => {
 })
 
 app.post('/', (req, res) => {
-  const { userId, iamGroups = [], noLogging = false } = req.body
+  const { userId, iamGroups = []} = req.body
 
   const relevantIamGroups = iamGroups.filter(iam => relevantIAMs.includes(iam))
 
   const { access } = getIAMRights(relevantIamGroups)
 
-  if (!noLogging && Object.keys(access).length !== 0)
+  if (Object.keys(access).length !== 0)
     logger.info('IAM authentication', { userId, iamGroups, access })
 
   res.send(access)
