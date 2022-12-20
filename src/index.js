@@ -4,10 +4,11 @@ const Sentry = require('@sentry/node')
 const { PORT, inProduction } = require('./util/config')
 const initializeSentry = require('./util/sentry')
 const logger = require('./util/logger')
-const { getIAMRights } = require('./auth/IAMRights')
 
 const errorHandler = require('./middleware/errors')
 const accessLogger = require('./middleware/access')
+
+const { getIAMRights } = require('./auth/IAMRights')
 
 initializeSentry()
 
@@ -29,7 +30,7 @@ app.post('/', (req, res) => {
 
   const { access } = getIAMRights(iamGroups)
 
-  if (!noLogging && Object.keys(access).length !== 0)
+  if (noLogging && Object.keys(access).length !== 0)
     logger.info('IAM authentication', { userId, iamGroups, access })
 
   res.send(access)
