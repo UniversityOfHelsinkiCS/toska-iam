@@ -10,6 +10,7 @@ const accessLogger = require('./middleware/access')
 
 const { relevantIAMs, relevantOrganisations } = require('./auth/IAMConfig')
 const { getIAMRights } = require('./auth/IAMRights')
+const { data } = require('./auth/data')
 
 initializeSentry()
 
@@ -49,6 +50,10 @@ app.get('/access-to-all', (_req, res) => {
   })
 
   res.send(access)
+})
+
+app.get('/organisation-data', (_req, res) => {
+  res.send(data)
 })
 
 app.use(Sentry.Handlers.errorHandler())
