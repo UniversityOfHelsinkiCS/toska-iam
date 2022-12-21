@@ -8,7 +8,7 @@ const logger = require('./util/logger')
 const errorHandler = require('./middleware/errors')
 const accessLogger = require('./middleware/access')
 
-const { relevantIAMs } = require('./auth/IAMConfig')
+const { relevantIAMs, relevantOrganisations } = require('./auth/IAMConfig')
 const { getIAMRights } = require('./auth/IAMRights')
 
 initializeSentry()
@@ -27,14 +27,26 @@ app.get('/ping', (_req, res) => {
 })
 
 app.post('/', (req, res) => {
-  const { userId, iamGroups = []} = req.body
+  const { userId, iamGroups = [] } = req.body
 
-  const relevantIamGroups = iamGroups.filter(iam => relevantIAMs.includes(iam))
+  const relevantIamGroups = iamGroups.filter((iam) =>
+    relevantIAMs.includes(iam),
+  )
 
   const { access } = getIAMRights(relevantIamGroups)
 
   if (Object.keys(access).length !== 0)
     logger.info('IAM authentication', { userId, iamGroups, access })
+
+  res.send(access)
+})
+
+app.get('/access-to-all', (_req, res) => {
+  const access = {}
+
+  relevantOrganisations.forEach((org) => {
+    access[org] = { read: true, write: true, admin: true }
+  })
 
   res.send(access)
 })
