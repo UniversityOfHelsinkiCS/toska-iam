@@ -39,7 +39,8 @@ app.post('/', (req, res) => {
 
   const { access } = getIAMRights(relevantIamGroups)
 
-  User.upsert({ id: userId, iamGroups: relevantIamGroups })
+  if (userId && iamGroups)
+    User.upsert({ id: userId, iamGroups: relevantIamGroups })
 
   if (Object.keys(access).length !== 0)
     logger.info('IAM authentication', { userId, iamGroups, access })
