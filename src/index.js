@@ -12,6 +12,9 @@ const { relevantIAMs, relevantOrganisations } = require('./auth/IAMConfig')
 const { getIAMRights } = require('./auth/IAMRights')
 const { data } = require('./auth/data')
 
+const { connectToDatabase } = require('./db/connection')
+const { User } = require('./db/models')
+
 initializeSentry()
 
 const app = express()
@@ -36,6 +39,8 @@ app.post('/', (req, res) => {
 
   const { access } = getIAMRights(relevantIamGroups)
 
+  User.upsert({ id: userId, iamGroups: relevantIamGroups })
+
   if (Object.keys(access).length !== 0)
     logger.info('IAM authentication', { userId, iamGroups, access })
 
@@ -59,10 +64,16 @@ app.get('/organisation-data', (_req, res) => {
 app.use(Sentry.Handlers.errorHandler())
 app.use(errorHandler)
 
-app.listen(PORT, () => {
-  logger.info(
-    `Started on port ${PORT} with environment ${
-      inProduction ? 'production' : 'development'
-    }`,
-  )
-})
+const start = async () => {
+  await connectToDatabase()
+
+  app.listen(PORT, () => {
+    logger.info(
+      `Started on port ${PORT} with environment ${
+        inProduction ? 'production' : 'development'
+      }`,
+    )
+  })
+}
+
+start()
