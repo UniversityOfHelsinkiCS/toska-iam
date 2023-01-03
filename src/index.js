@@ -26,9 +26,7 @@ app.use(express.json())
 
 if (!inProduction) app.use(accessLogger)
 
-app.get('/ping', (_req, res) => {
-  res.send('pong')
-})
+app.get('/ping', (_req, res) => res.send('pong'))
 
 app.post('/', (req, res) => {
   const { userId, iamGroups = [] } = req.body
@@ -45,7 +43,7 @@ app.post('/', (req, res) => {
   if (Object.keys(access).length !== 0)
     logger.info('IAM authentication', { userId, iamGroups, access })
 
-  res.send(access)
+  return res.send(access)
 })
 
 app.get('/access-to-all', (_req, res) => {
@@ -55,11 +53,19 @@ app.get('/access-to-all', (_req, res) => {
     access[org] = { read: true, write: true, admin: true }
   })
 
-  res.send(access)
+  return res.send(access)
 })
 
-app.get('/organisation-data', (_req, res) => {
-  res.send(data)
+app.get('/organisation-data', (_req, res) => res.send(data))
+
+app.get('/:id', async (req, res) => {
+  const { id } = req.params
+
+  const user = await User.findByPk(id)
+
+  if (!user) return res.sendStatus(404)
+
+  return res.send(user)
 })
 
 app.use(Sentry.Handlers.errorHandler())
