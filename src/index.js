@@ -58,6 +58,14 @@ app.get('/access-to-all', (_req, res) => {
 
 app.get('/organisation-data', (_req, res) => res.send(data))
 
+app.get('/all-access', async (_req, res) => {
+  const users = await User.findAll()
+
+  const usersWithAccess = users.map(({ dataValues: user }) => ({ ...user, ...getIAMRights(user.iamGroups)}))
+
+  return res.send(usersWithAccess)
+})
+
 app.get('/:id', async (req, res) => {
   const { id } = req.params
 
