@@ -1,5 +1,6 @@
 const Sentry = require('@sentry/node')
-const Tracing = require("@sentry/tracing")
+// eslint-disable-next-line no-unused-vars
+const Tracing = require('@sentry/tracing')
 
 const { inProduction } = require('./config')
 
