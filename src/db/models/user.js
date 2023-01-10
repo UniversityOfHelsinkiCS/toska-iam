@@ -14,6 +14,11 @@ const User = sequelize.define(
       allowNull: false,
       defaultValue: [],
     },
+    userGroups: {
+      type: ARRAY(STRING),
+      allowNull: false,
+      defaultValue: [],
+    },
   },
   {
     underscored: true,
