@@ -35,7 +35,7 @@ app.post('/', (req, res) => {
     relevantIAMs.includes(iam),
   )
 
-  const { access } = getIAMRights(relevantIamGroups)
+  const { access, specialGroup } = getIAMRights(relevantIamGroups)
 
   if (userId && iamGroups)
     User.upsert({ id: userId, iamGroups: relevantIamGroups })
@@ -43,7 +43,7 @@ app.post('/', (req, res) => {
   if (Object.keys(access).length !== 0)
     logger.info('IAM authentication', { userId, iamGroups, access })
 
-  return res.send(access)
+  return res.send({ ...access, specialGroup })
 })
 
 app.get('/access-to-all', (_req, res) => {
@@ -53,7 +53,9 @@ app.get('/access-to-all', (_req, res) => {
     access[org] = { read: true, write: true, admin: true }
   })
 
-  return res.send(access)
+  const specialGroup = { allProgrammes: true }
+
+  return res.send({ ...access, specialGroup })
 })
 
 app.get('/organisation-data', (_req, res) => res.send(data))
