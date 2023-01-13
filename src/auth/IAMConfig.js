@@ -394,6 +394,8 @@ const adminGroups = ['grp-ospa']
 
 const employeeGroups = ['hy-employees']
 
+const oodikoneIams = ['grp-oodikone-users', 'grp-oodikone-basic-users']
+
 const isSuperAdminIam = (iam) => superAdminGroups.includes(iam)
 
 const isAdminIam = (iam) => adminGroups.includes(iam)
@@ -445,6 +447,7 @@ const relevantIAMs = []
   .concat(superAdminGroups)
   .concat(adminGroups)
   .concat(employeeGroups)
+  .concat(oodikoneIams)
 
 const RELEVANT_ORGANISATION_CODES = [
   'H906', // Kielikeskus
