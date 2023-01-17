@@ -394,6 +394,8 @@ const adminGroups = ['grp-ospa']
 
 const openUniGroups = ['hy-ypa-opa-dojo']
 
+const hyOneGroups = ['hy-one'] // opintoasiainneuvosto
+
 const employeeGroups = ['hy-employees']
 
 const oodikoneIams = ['grp-oodikone-users', 'grp-oodikone-basic-users']
@@ -403,6 +405,8 @@ const isSuperAdminIam = (iam) => superAdminGroups.includes(iam)
 const isAdminIam = (iam) => adminGroups.includes(iam)
 
 const isOpenUniIam = (iam) => openUniGroups.includes(iam)
+
+const isHyOneIam = (iam) => hyOneGroups.includes(iam)
 
 const isUniversityWideIam = (iam) => universityWideGroups.includes(iam)
 
@@ -451,6 +455,7 @@ const relevantIAMs = []
   .concat(superAdminGroups)
   .concat(adminGroups)
   .concat(openUniGroups)
+  .concat(hyOneGroups)
   .concat(employeeGroups)
   .concat(oodikoneIams)
 
@@ -473,6 +478,7 @@ module.exports = {
   isSuperAdminIam,
   isAdminIam,
   isOpenUniIam,
+  isHyOneIam,
   isUniversityWideIam,
   isDoctoralIam,
   isEmployeeIam,

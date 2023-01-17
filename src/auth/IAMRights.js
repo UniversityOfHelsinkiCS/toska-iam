@@ -2,6 +2,7 @@ const {
   isSuperAdminIam,
   isAdminIam,
   isOpenUniIam,
+  isHyOneIam,
   isUniversityWideIam,
   isDoctoralIam,
   iamToOrganisationCode,
@@ -71,6 +72,24 @@ const getOpenUni = (hyGroups) => {
   const isOpenUni = hyGroups.some(isOpenUniIam)
   if (isOpenUni) {
     return { specialGroup: { openUni: true } }
+  }
+  return {}
+}
+
+/**
+ * Needed for Oodikone
+ * Grant teachers rights if the user has correct iams (eg. hy-one)
+ * @param {string[]} hyGroups
+ * @returns hyOne special group
+ */
+const getHyOne = (hyGroups) => {
+  console.log('hyOne')
+
+  const isHyIam = hyGroups.some(isHyOneIam)
+
+  console.log(isHyIam)
+  if (isHyIam) {
+    return { specialGroup: { hyOne: true } }
   }
   return {}
 }
@@ -253,6 +272,7 @@ const getIAMRights = (hyGroups) => {
     getAdmin,
     getSuperAdmin,
     getOpenUni,
+    getHyOne,
   ]
     .map((f) => f(hyGroups))
     .forEach(({ access: newAccess, specialGroup: newSpecialGroup }) => {
