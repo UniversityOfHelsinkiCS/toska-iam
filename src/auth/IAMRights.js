@@ -1,6 +1,7 @@
 const {
   isSuperAdminIam,
   isAdminIam,
+  isOpenUniIam,
   isUniversityWideIam,
   isDoctoralIam,
   iamToOrganisationCode,
@@ -56,6 +57,20 @@ const getAdmin = (hyGroups) => {
   const isOspa = hyGroups.some(isAdminIam)
   if (isOspa) {
     return { specialGroup: { admin: true } }
+  }
+  return {}
+}
+
+/**
+ * Needed for Oodikone
+ * Grant open uni rights if the user has correct iams (eg. hy-ypa-opa-dojo)
+ * @param {string[]} hyGroups
+ * @returns openUni special group
+ */
+const getOpenUni = (hyGroups) => {
+  const isOpenUni = hyGroups.some(isOpenUniIam)
+  if (isOpenUni) {
+    return { specialGroup: { openUni: true } }
   }
   return {}
 }
@@ -237,6 +252,7 @@ const getIAMRights = (hyGroups) => {
     getFacultyAdminRights,
     getAdmin,
     getSuperAdmin,
+    getOpenUni,
   ]
     .map((f) => f(hyGroups))
     .forEach(({ access: newAccess, specialGroup: newSpecialGroup }) => {
