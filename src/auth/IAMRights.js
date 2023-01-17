@@ -83,11 +83,7 @@ const getOpenUni = (hyGroups) => {
  * @returns hyOne special group
  */
 const getHyOne = (hyGroups) => {
-  console.log('hyOne')
-
   const isHyIam = hyGroups.some(isHyOneIam)
-
-  console.log(isHyIam)
   if (isHyIam) {
     return { specialGroup: { hyOne: true } }
   }
