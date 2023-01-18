@@ -121,6 +121,29 @@ const getKosu = (hyGroups) => {
 }
 
 /**
+ * Get special groups based on IAM-groups
+ * @param {string[]} hyGroups
+ */
+const getSpecialGroups = (hyGroups) => {
+  let specialGroup = {}
+
+  ;[
+    getAdmin,
+    getSuperAdmin,
+    getOpenUni,
+    getHyOne,
+    getJory,
+    getKosu,
+  ]
+    .map((f) => f(hyGroups))
+    .forEach(({ specialGroup: newSpecialGroup }) => {
+      specialGroup = { ...specialGroup, ...newSpecialGroup }
+    })
+
+  return { specialGroup }
+}
+
+/**
  * Grant reading rights to all programmes if user has uni wide IAM (eg. hy-rehtoraatti)
  * @param {string[]} hyGroups
  * @returns read access to ALL programmes
@@ -295,12 +318,7 @@ const getIAMRights = (hyGroups) => {
     // getProgrammeWriteAccess,
     getProgrammeAdminAccess,
     getFacultyAdminRights,
-    getAdmin,
-    getSuperAdmin,
-    getOpenUni,
-    getHyOne,
-    getJory,
-    getKosu,
+    getSpecialGroups,
   ]
     .map((f) => f(hyGroups))
     .forEach(({ access: newAccess, specialGroup: newSpecialGroup }) => {
