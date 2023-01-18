@@ -388,6 +388,10 @@ const universityWideGroups = [
   'hy-rehtoraatti',
 ]
 
+const joryGroups = [...Object.keys(joryMap)]
+
+const kosuGroups = [...Object.keys(kosuFacultyMap)]
+
 const superAdminGroups = ['grp-toska']
 
 const adminGroups = ['grp-ospa']
@@ -407,6 +411,10 @@ const isAdminIam = (iam) => adminGroups.includes(iam)
 const isOpenUniIam = (iam) => openUniGroups.includes(iam)
 
 const isHyOneIam = (iam) => hyOneGroups.includes(iam)
+
+const isJoryIam = (iam) => joryGroups.includes(iam)
+
+const isKosuIam = (iam) => kosuGroups.includes(iam)
 
 const isUniversityWideIam = (iam) => universityWideGroups.includes(iam)
 
@@ -479,6 +487,8 @@ module.exports = {
   isAdminIam,
   isOpenUniIam,
   isHyOneIam,
+  isJoryIam,
+  isKosuIam,
   isUniversityWideIam,
   isDoctoralIam,
   isEmployeeIam,

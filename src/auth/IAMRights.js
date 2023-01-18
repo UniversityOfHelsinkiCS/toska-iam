@@ -3,6 +3,8 @@ const {
   isAdminIam,
   isOpenUniIam,
   isHyOneIam,
+  isJoryIam,
+  isKosuIam,
   isUniversityWideIam,
   isDoctoralIam,
   iamToOrganisationCode,
@@ -86,6 +88,34 @@ const getHyOne = (hyGroups) => {
   const isHyIam = hyGroups.some(isHyOneIam)
   if (isHyIam) {
     return { specialGroup: { hyOne: true } }
+  }
+  return {}
+}
+
+/**
+ * Needed for Oodikone
+ * Grant jory special group if the user has jory iams (eg. hy-ttdk-tuk-jory)
+ * @param {string[]} hyGroups
+ * @returns jory special group
+ */
+const getJory = (hyGroups) => {
+  const isJory = hyGroups.some(isJoryIam)
+  if (isJory) {
+    return { specialGroup: { jory: true } }
+  }
+  return {}
+}
+
+/**
+ * Needed for Oodikone
+ * Grant kosu special group if the user has kosu iams (eg. hy-ypa-opa-kosu-kumpula)
+ * @param {string[]} hyGroups
+ * @returns kosu special group
+ */
+const getKosu = (hyGroups) => {
+  const isKosu = hyGroups.some(isKosuIam)
+  if (isKosu) {
+    return { specialGroup: { kosu: true } }
   }
   return {}
 }
@@ -269,6 +299,8 @@ const getIAMRights = (hyGroups) => {
     getSuperAdmin,
     getOpenUni,
     getHyOne,
+    getJory,
+    getKosu,
   ]
     .map((f) => f(hyGroups))
     .forEach(({ access: newAccess, specialGroup: newSpecialGroup }) => {
