@@ -37,8 +37,7 @@ app.post('/', (req, res) => {
 
   const { access, specialGroup } = getIAMRights(relevantIamGroups)
 
-  if (userId && iamGroups)
-    User.upsert({ id: userId, iamGroups: relevantIamGroups })
+  if (userId && iamGroups) User.upsert({ id: userId, iamGroups })
 
   if (Object.keys(access).length !== 0)
     logger.info('IAM authentication', { userId, iamGroups, access })
@@ -75,6 +74,8 @@ app.get('/:id', async (req, res) => {
   const { id } = req.params
 
   const user = await User.findByPk(id)
+
+  user.iamGroups = user.iamGroups.filter((iam) => relevantIAMs.includes(iam))
 
   if (!user) return res.sendStatus(404)
 
