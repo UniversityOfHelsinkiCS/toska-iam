@@ -75,9 +75,9 @@ app.get('/:id', async (req, res) => {
 
   const user = await User.findByPk(id)
 
-  user.iamGroups = user.iamGroups.filter((iam) => relevantIAMs.includes(iam))
-
   if (!user) return res.sendStatus(404)
+
+  user.iamGroups = user.iamGroups.filter((iam) => relevantIAMs.includes(iam))
 
   return res.send(user)
 })

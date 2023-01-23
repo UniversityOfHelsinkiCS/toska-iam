@@ -127,14 +127,7 @@ const getKosu = (hyGroups) => {
 const getSpecialGroups = (hyGroups) => {
   let specialGroup = {}
 
-  ;[
-    getAdmin,
-    getSuperAdmin,
-    getOpenUni,
-    getHyOne,
-    getJory,
-    getKosu,
-  ]
+  ;[getAdmin, getSuperAdmin, getOpenUni, getHyOne, getJory, getKosu]
     .map((f) => f(hyGroups))
     .forEach(({ specialGroup: newSpecialGroup }) => {
       specialGroup = { ...specialGroup, ...newSpecialGroup }
