@@ -40,7 +40,7 @@ const connectToDatabase = async (attempt = 0) => {
         error: err.stack,
       })
 
-      return process.exit(1)
+      return
     }
     logger.info(
       `Connection to database failed! Attempt ${attempt} of ${DB_CONNECTION_RETRY_LIMIT}`,
