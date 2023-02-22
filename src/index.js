@@ -8,7 +8,11 @@ const logger = require('./util/logger')
 const errorHandler = require('./middleware/errors')
 const accessLogger = require('./middleware/access')
 
-const { relevantIAMs, relevantOrganisations } = require('./auth/IAMConfig')
+const {
+  relevantIAMs,
+  relevantOrganisations,
+  iamToFaculty,
+} = require('./auth/IAMConfig')
 const { getIAMRights } = require('./auth/IAMRights')
 const { data } = require('./auth/data')
 
@@ -85,6 +89,22 @@ app.get('/:id', async (req, res) => {
   user.iamGroups = user.iamGroups.filter((iam) => relevantIAMs.includes(iam))
 
   return res.send(user)
+})
+
+app.get('/faculty/:id', async (req, res) => {
+  const { id } = req.params
+
+  const user = await User.findByPk(id)
+
+  if (!user) return res.sendStatus(404)
+
+  const faculties = []
+  user.iamGroups.forEach((iam) => {
+    const facultyCode = iamToFaculty(iam)
+    if (facultyCode) faculties.push(facultyCode)
+  })
+
+  return res.send(faculties)
 })
 
 app.use(Sentry.Handlers.errorHandler())

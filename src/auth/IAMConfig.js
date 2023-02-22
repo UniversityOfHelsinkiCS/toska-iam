@@ -388,6 +388,24 @@ const universityWideGroups = [
   'hy-rehtoraatti',
 ]
 
+const facultyIamsMap = {
+  teologinen: [],
+  oikeustieteellinen: [],
+  lääketieteellinen: [],
+  humanistinen: [],
+  'matemaattis-luonnontieteellinen': [
+    'hy-mltdk-allstaff',
+    'hy-mltdk-employees',
+  ],
+  farmasia: [],
+  'bio- ja ympäristötieteellinen': [],
+  kasvatustieteellinen: [],
+  valtiotieteellinen: [],
+  svenska: [],
+  'maatalous-metsätieteellinen': [],
+  eläinlääketieteellinen: [],
+}
+
 const joryGroups = [...Object.keys(joryMap)]
 
 const kosuGroups = [...Object.keys(kosuFacultyMap)]
@@ -450,6 +468,16 @@ const dekaaniIamToFaculty = (iam) => {
   return facultyMap[faculty]
 }
 
+const iamToFaculty = (iam) => {
+  const faculties = Object.keys(facultyIamsMap)
+
+  for (const f of faculties) {
+    if (facultyIamsMap[f].includes(iam)) {
+      return facultyMap[f]
+    }
+  }
+}
+
 const relevantIAMs = []
   .concat(Object.keys(joryMap))
   .concat(Object.keys(kojoMap))
@@ -496,6 +524,7 @@ module.exports = {
   iamToOrganisationCode,
   kosuIamToFaculties,
   dekaaniIamToFaculty,
+  iamToFaculty,
   opetusVaradekaani,
   getStudyLeaderGroup,
   isStudyLeaderGroup,
