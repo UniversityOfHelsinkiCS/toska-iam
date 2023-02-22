@@ -473,7 +473,8 @@ const iamToFaculty = (iam) => {
 
   for (const f of faculties) {
     if (facultyIamsMap[f].includes(iam)) {
-      return facultyMap[f]
+      const faculty = data.find(({ code }) => code === facultyMap[f])
+      return faculty
     }
   }
 }

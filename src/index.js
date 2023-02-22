@@ -91,20 +91,18 @@ app.get('/:id', async (req, res) => {
   return res.send(user)
 })
 
-app.get('/faculty/:id', async (req, res) => {
-  const { id } = req.params
+app.post('/user-organisations', async (req, res) => {
+  const { userId, iamGroups = [] } = req.body
 
-  const user = await User.findByPk(id)
+  if (userId && iamGroups) User.upsert({ id: userId, iamGroups })
 
-  if (!user) return res.sendStatus(404)
-
-  const faculties = []
-  user.iamGroups.forEach((iam) => {
-    const facultyCode = iamToFaculty(iam)
-    if (facultyCode) faculties.push(facultyCode)
+  const faculties = {}
+  iamGroups.forEach((iam) => {
+    const faculty = iamToFaculty(iam)
+    if (faculty) faculties[faculty.code] = faculty
   })
 
-  return res.send(faculties)
+  return res.send(Object.values(faculties))
 })
 
 app.use(Sentry.Handlers.errorHandler())
