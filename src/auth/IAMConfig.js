@@ -389,21 +389,21 @@ const universityWideGroups = [
 ]
 
 const facultyIamsMap = {
-  teologinen: [],
-  oikeustieteellinen: [],
-  lääketieteellinen: [],
-  humanistinen: [],
+  teologinen: ['hy-ttdk-allstaff', 'hy-ttdk-employees'],
+  oikeustieteellinen: ['hy-oiktdk-allstaff', 'hy-oiktdk-employees'],
+  lääketieteellinen: ['hy-ltdk-allstaff', 'hy-ltdk-employees'],
+  humanistinen: ['hy-humtdk-allstaff', 'hy-humtdk-employees'],
   'matemaattis-luonnontieteellinen': [
     'hy-mltdk-allstaff',
     'hy-mltdk-employees',
   ],
-  farmasia: [],
-  'bio- ja ympäristötieteellinen': [],
-  kasvatustieteellinen: [],
-  valtiotieteellinen: [],
-  svenska: [],
-  'maatalous-metsätieteellinen': [],
-  eläinlääketieteellinen: [],
+  farmasia: ['hy-ftdk-allstaff', 'hy-ftdk-employees'],
+  'bio- ja ympäristötieteellinen': ['hy-bytdk-allstaff', 'hy-bytdk-employees'],
+  kasvatustieteellinen: ['hy-ktdk-allstaff', 'hy-ktdk-employees'],
+  valtiotieteellinen: ['hy-valttdk-allstaff', 'hy-valttdk-employees'],
+  svenska: ['hy-sskh-allstaff', 'hy-sskh-employees'],
+  'maatalous-metsätieteellinen': ['hy-mmtdk-allstaff', 'hy-mmtdk-employees'],
+  eläinlääketieteellinen: ['hy-eltdk-allstaff', 'hy-eltdk-employees'],
 }
 
 const joryGroups = [...Object.keys(joryMap)]
