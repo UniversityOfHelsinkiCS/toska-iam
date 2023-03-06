@@ -79,16 +79,14 @@ app.get('/all-access', async (_req, res) => {
   return res.send(usersWithAccess)
 })
 
-app.get('/:id', async (req, res) => {
-  const { id } = req.params
+app.get('/iam-groups', async (_req, res) => {
+  const users = await User.findAll()
 
-  const user = await User.findByPk(id)
+  const iamGroups = users.map(({ iamGroups }) => iamGroups).flat()
 
-  if (!user) return res.sendStatus(404)
+  const uniqueIamGroups = [...new Set(iamGroups)]
 
-  user.iamGroups = user.iamGroups.filter((iam) => relevantIAMs.includes(iam))
-
-  return res.send(user)
+  return res.send(uniqueIamGroups)
 })
 
 app.post('/user-organisations', async (req, res) => {
@@ -103,6 +101,18 @@ app.post('/user-organisations', async (req, res) => {
   })
 
   return res.send(Object.values(faculties))
+})
+
+app.get('/:id', async (req, res) => {
+  const { id } = req.params
+
+  const user = await User.findByPk(id)
+
+  if (!user) return res.sendStatus(404)
+
+  user.iamGroups = user.iamGroups.filter((iam) => relevantIAMs.includes(iam))
+
+  return res.send(user)
 })
 
 app.use(Sentry.Handlers.errorHandler())
