@@ -31,4 +31,6 @@ Response
 }
 ```
 ### Other routes
-`GET` `/ping`, `/access-to-all`, `/organisation-data`, `/all-access`, `/:userId`
+`GET` `/ping`, `/access-to-all`, `/organisation-data`, `/all-access`, `/iam-groups`, `/:userId`
+
+`POST` `user-organisations`
