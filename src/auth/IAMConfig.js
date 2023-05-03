@@ -386,6 +386,7 @@ const universityWideGroups = [
   'hy-ypa-opa-opintoasiainpaallikot',
   'hy-ypa-opa-ospa',
   'hy-rehtoraatti',
+  'hy-one',
 ]
 
 const facultyIamsMap = {
