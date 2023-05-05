@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Pull image and create a container
-        run: docker create --name jami toska/jami:latest
+        run: docker create --name jami quay.io/toska/jami:production
 
       - name: Copy assets from the container
         run: docker cp jami:/opt/app-root/src/ ./app
