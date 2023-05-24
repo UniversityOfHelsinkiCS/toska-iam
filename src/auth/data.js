@@ -915,6 +915,17 @@ const data = [
         international: false,
       },
       {
+        key: 'MH55_002',
+        name: {
+          en: 'Master\'s programme in Pharmaceutical Research, Development and Safety',
+          fi: 'Master\'s programme in Pharmaceutical Research, Development and Safety',
+          sv: 'Master\'s programme in Pharmaceutical Research, Development and Safety',
+        },
+        level: 'master',
+        companionFaculties: [],
+        international: true,
+      },
+      {
         key: 'T921105',
         name: {
           fi: 'Lääketutkimuksen tohtoriohjelma',
