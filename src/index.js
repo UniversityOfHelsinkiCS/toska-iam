@@ -28,7 +28,7 @@ app.use(Sentry.Handlers.tracingHandler())
 
 app.use(express.json())
 
-if (!inProduction) app.use(accessLogger)
+app.use(accessLogger)
 
 app.get('/ping', (_req, res) => res.send('pong'))
 
