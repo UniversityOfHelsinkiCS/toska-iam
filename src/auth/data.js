@@ -1545,6 +1545,17 @@ const data = [
         international: true,
       },
       {
+        key: 'MH80_008', // This one is mostly a mystery, hard to find information.
+        name: {
+          fi: 'Erasmus-Mundus Master\'s Programme in Plant Breeding (EMPLANT)',
+          en: 'Erasmus-Mundus Master\'s Programme in Plant Breeding (EMPLANT)',
+          sv: 'Erasmus-Mundus Master\'s Programme in Plant Breeding (EMPLANT)',
+        },
+        level: 'master',
+        companionFaculties: [], // best guess
+        international: true,
+      },
+      {
         key: 'T922104',
         name: {
           fi: 'Uusiutuvien luonnonvarojen kestävän käytön tohtoriohjelma',
