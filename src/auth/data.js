@@ -806,6 +806,17 @@ const data = [
         international: true,
       },
       {
+        key: 'MH50_014',
+        name: {
+          fi: 'Nordic Master Programme in Environmental Changes at Higher Latitudes',
+          en: "Nordic Master Programme in Environmental Changes at Higher Latitudes",
+          sv: 'Nordic Master Programme in Environmental Changes at Higher Latitudes',
+        },
+        level: 'master',
+        companionFaculties: [],
+        international: true,
+      },
+      {
         key: 'T923102',
         name: {
           fi: 'Geotieteiden tohtoriohjelma',
@@ -1547,9 +1558,9 @@ const data = [
       {
         key: 'MH80_008', // This one is mostly a mystery, hard to find information.
         name: {
-          fi: 'Erasmus-Mundus Master\'s Programme in Plant Breeding (EMPLANT)',
-          en: 'Erasmus-Mundus Master\'s Programme in Plant Breeding (EMPLANT)',
-          sv: 'Erasmus-Mundus Master\'s Programme in Plant Breeding (EMPLANT)',
+          fi: 'Erasmus-Mundus Master\'s Programme in Plant Breeding',
+          en: 'Erasmus-Mundus Master\'s Programme in Plant Breeding',
+          sv: 'Erasmus-Mundus Master\'s Programme in Plant Breeding',
         },
         level: 'master',
         companionFaculties: [], // best guess
