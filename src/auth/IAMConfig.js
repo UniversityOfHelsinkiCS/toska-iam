@@ -405,6 +405,7 @@ const facultyIamsMap = {
   svenska: ['hy-sskh-allstaff', 'hy-sskh-employees'],
   'maatalous-metsätieteellinen': ['hy-mmtdk-allstaff', 'hy-mmtdk-employees'],
   eläinlääketieteellinen: ['hy-eltdk-allstaff', 'hy-eltdk-employees'],
+  kielikeskus: [],
 }
 
 const joryGroups = [...Object.keys(joryMap)]
@@ -498,7 +499,6 @@ const relevantIAMs = []
   .concat(oodikoneIams)
 
 const RELEVANT_ORGANISATION_CODES = [
-  'H906', // Kielikeskus
   'H930', // Avoin yliopisto
 ]
 

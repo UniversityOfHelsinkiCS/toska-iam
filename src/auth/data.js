@@ -11,6 +11,7 @@ const facultyMap = {
   svenska: 'H74',
   'maatalous-metsätieteellinen': 'H80',
   eläinlääketieteellinen: 'H90',
+  kielikeskus: 'H906',
 }
 
 const data = [
@@ -1647,6 +1648,16 @@ const data = [
       },
     ],
   },
+  {
+    code: 'H906',
+    name: {
+      fi: 'Kielikeskus',
+      en: 'Language Centre',
+      sv: 'Språkcentrum',
+    },
+    programmes: [],
+    independentInstitute: true,
+  }
 ]
 
 module.exports = {
