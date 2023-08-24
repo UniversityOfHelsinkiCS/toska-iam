@@ -8,7 +8,7 @@ const initializeSentry = () => {
   if (!inProduction) return
 
   Sentry.init({
-    dsn: 'https://e3af253db270454ca8eed5a4a8099ade@sentry.cs.helsinki.fi/14',
+    dsn: 'https://f67e2aa95d80df2823600b00544bf059@toska.cs.helsinki.fi/11',
     tracesSampleRate: 1.0,
   })
 }
