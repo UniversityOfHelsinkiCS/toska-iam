@@ -209,6 +209,17 @@ const data = [
         international: true,
       },
       {
+        key: '300-M006',
+        name: {
+          fi: 'Terveydenhuollon kehittämisen maisteriohjelma',
+          en: "Master's Programme in Development of health care services",
+          sv: 'Magisterprogrammet för utveckling av hälsovården',
+        },
+        level: 'master',
+        companionFaculties: [],
+        international: false,
+      },
+      {
         key: 'T921101',
         name: {
           fi: 'Biolääketieteellinen tohtoriohjelma',

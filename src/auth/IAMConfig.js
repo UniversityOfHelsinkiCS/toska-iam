@@ -422,7 +422,11 @@ const hyOneGroups = ['hy-one'] // opintoasiainneuvosto
 
 const employeeGroups = ['hy-employees']
 
-const oodikoneIams = ['grp-oodikone-users', 'grp-oodikone-basic-users']
+const oodikoneIams = [
+  'grp-oodikone-users',
+  'grp-oodikone-basic-users',
+  'hy-ypa-henkilosto',
+]
 
 const isSuperAdminIam = (iam) => superAdminGroups.includes(iam)
 
