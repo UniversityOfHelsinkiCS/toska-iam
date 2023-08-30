@@ -209,7 +209,7 @@ const data = [
         international: true,
       },
       {
-        key: '300-M006',
+        key: 'MH30_006',
         name: {
           fi: 'Terveydenhuollon kehittämisen maisteriohjelma',
           en: "Master's Programme in Development of health care services",
