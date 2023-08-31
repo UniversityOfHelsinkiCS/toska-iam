@@ -43,8 +43,7 @@ app.post('/', (req, res) => {
 
   if (userId && iamGroups) User.upsert({ id: userId, iamGroups })
 
-  if (Object.keys(access).length !== 0)
-    logger.info('IAM authentication', { userId, iamGroups, access })
+  logger.info('IAM authentication', { userId, iamGroups, access })
 
   return res.send({ ...access, specialGroup })
 })
