@@ -109,9 +109,12 @@ app.get('/:id', async (req, res) => {
 
   if (!user) return res.sendStatus(404)
 
-  user.iamGroups = user.iamGroups.filter((iam) => relevantIAMs.includes(iam))
+  const iamGroups = user.iamGroups.filter((iam) => relevantIAMs.includes(iam))
 
-  return res.send(user)
+  return res.send({
+    ...user.dataValues,
+    iamGroups,
+  })
 })
 
 app.use(Sentry.Handlers.errorHandler())
