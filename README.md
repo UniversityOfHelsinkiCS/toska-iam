@@ -1,5 +1,6 @@
 # Jami
-Jonkinlainen Autorisaation Mankeli Iam:eille
+
+Jämpti autorisaatio mankeli IAM:eille
 
 ## Usage
 e.g. `POST /`
