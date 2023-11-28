@@ -14,6 +14,7 @@ const {
   dekaaniIamToFaculty,
   opetusVaradekaani,
   isStudyLeaderGroup,
+  isKatselmusViewer,
 } = require('./IAMConfig')
 const { data } = require('./data')
 const { mapToDegreeCode } = require('./common')
@@ -121,13 +122,29 @@ const getKosu = (hyGroups) => {
 }
 
 /**
+ * Needed for Oodikone
+ * Grant katselmusViewer special group, which means that the user can see oodikone's 
+ * evaluationoverview which is linked in tilannekuvalomake
+ * @param {string[]} hyGroups
+ * @returns katselmusViewer special group
+ */
+const getKatselmusViewer = (hyGroups) => {
+  const katselmusViewer = hyGroups.some(isKatselmusViewer)
+  console.log({ katselmusViewer, hyGroups, isKatselmusViewer })
+  if (katselmusViewer) {
+    return { specialGroup: { katselmusViewer: true } }
+  }
+  return {}
+}
+
+/**
  * Get special groups based on IAM-groups
  * @param {string[]} hyGroups
  */
 const getSpecialGroups = (hyGroups) => {
   let specialGroup = {}
 
-  ;[getAdmin, getSuperAdmin, getOpenUni, getHyOne, getJory, getKosu]
+  ;[getAdmin, getSuperAdmin, getOpenUni, getHyOne, getJory, getKosu, getKatselmusViewer]
     .map((f) => f(hyGroups))
     .forEach(({ specialGroup: newSpecialGroup }) => {
       specialGroup = { ...specialGroup, ...newSpecialGroup }

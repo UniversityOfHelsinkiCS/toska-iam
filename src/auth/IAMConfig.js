@@ -430,6 +430,19 @@ const oodikoneIams = [
   'hy-ypa-henkilosto',
 ]
 
+const katselmusViewerIams = ['grp-katselmus-ttdk',
+'grp-katselmus-oiktdk',
+'grp-katselmus-ltdk',
+'grp-katselmus-humtdk',
+'grp-katselmus-mltdk',
+'grp-katselmus-ftdk',
+'grp-katselmus-bytdk',
+'grp-katselmus-ktdk',
+'grp-katselmus-valttdk',
+'grp-katselmus-sockom',
+'grp-katselmus-mmtdk',
+'grp-katselmus-eltdk']
+
 const isSuperAdminIam = (iam) => superAdminGroups.includes(iam)
 
 const isAdminIam = (iam) => adminGroups.includes(iam)
@@ -441,6 +454,8 @@ const isHyOneIam = (iam) => hyOneGroups.includes(iam)
 const isJoryIam = (iam) => joryGroups.includes(iam)
 
 const isKosuIam = (iam) => kosuGroups.includes(iam)
+
+const isKatselmusViewer = (iam) => katselmusViewerIams.includes(iam)
 
 const isUniversityWideIam = (iam) => universityWideGroups.includes(iam)
 
@@ -503,6 +518,7 @@ const relevantIAMs = []
   .concat(hyOneGroups)
   .concat(employeeGroups)
   .concat(oodikoneIams)
+  .concat(katselmusViewerIams)
 
 const RELEVANT_ORGANISATION_CODES = [
   'H930', // Avoin yliopisto
@@ -538,5 +554,6 @@ module.exports = {
   isStudyLeaderGroup,
   relevantIAMs,
   relevantOrganisations,
+  isKatselmusViewer,
   ANY,
 }
