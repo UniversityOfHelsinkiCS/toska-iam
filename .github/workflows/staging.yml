@@ -35,10 +35,10 @@ jobs:
         run: npm ci
 
       - name: Run tests
-        run: sleep 6 && npm test
+        run: echo "Waiting 6 seconds before starting..." && sleep 6 && npm test
 
-      - name: Output application logs
-        if: always()
+      - name: Output application logs on failure
+        if: failure()
         run: docker-compose -f docker-compose.ci.yml logs -t --tail=100
 
   build-and-push:
