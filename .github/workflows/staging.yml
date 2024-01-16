@@ -40,6 +40,9 @@ jobs:
         env:
           CI: true
         run: npm test
+      
+      - name: Output application logs
+        run: docker-compose -f docker-compose.ci.yml logs -t --tail=100
 
   build-and-push:
     runs-on: ubuntu-latest
