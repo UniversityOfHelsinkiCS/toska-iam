@@ -18,6 +18,7 @@ const { data } = require('./auth/data')
 
 const { connectToDatabase } = require('./db/connection')
 const { User } = require('./db/models')
+const testRouter = require('./util/testRouter')
 
 initializeSentry()
 
@@ -116,6 +117,10 @@ app.get('/:id', async (req, res) => {
     iamGroups,
   })
 })
+
+if (!inProduction) {
+  app.use(testRouter)
+}
 
 app.use(Sentry.Handlers.errorHandler())
 app.use(errorHandler)

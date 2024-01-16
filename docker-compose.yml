@@ -9,6 +9,7 @@ services:
     environment:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
       - PORT=3000
+      - NODE_ENV=development
     volumes:
       - ./:/usr/src/app
     ports:
