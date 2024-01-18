@@ -1,3 +1,5 @@
+[![Release to staging](https://github.com/UniversityOfHelsinkiCS/jami/actions/workflows/staging.yml/badge.svg)](https://github.com/UniversityOfHelsinkiCS/jami/actions/workflows/staging.yml)
+
 # Jami
 
 Jämpti autorisaatio mankeli IAM:eille
