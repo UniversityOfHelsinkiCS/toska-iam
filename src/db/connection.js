@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const { Umzug, SequelizeStorage } = require('umzug')
-const logger = require('../util/logger')
 const { DATABASE_URL } = require('../util/config')
+import logger from '../util/logger'
 
 const DB_CONNECTION_RETRY_LIMIT = 10
 

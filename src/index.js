@@ -3,7 +3,7 @@ const Sentry = require('@sentry/node')
 
 const { PORT, inProduction } = require('./util/config')
 const initializeSentry = require('./util/sentry')
-const logger = require('./util/logger')
+import logger from './util/logger'
 
 const errorHandler = require('./middleware/errors')
 const accessLogger = require('./middleware/access')

@@ -1,6 +1,6 @@
-const winston = require('winston')
+import winston from 'winston'
 
-const { inProduction } = require('./config')
+import { inProduction } from './config'
 
 const { combine, timestamp, printf, splat } = winston.format
 
@@ -43,4 +43,4 @@ if (!inProduction) {
 
 const logger = winston.createLogger({ transports })
 
-module.exports = logger
+export default logger

@@ -821,7 +821,7 @@ const data = [
         key: 'MH50_014',
         name: {
           fi: 'Nordic Master Programme in Environmental Changes at Higher Latitudes',
-          en: "Nordic Master Programme in Environmental Changes at Higher Latitudes",
+          en: 'Nordic Master Programme in Environmental Changes at Higher Latitudes',
           sv: 'Nordic Master Programme in Environmental Changes at Higher Latitudes',
         },
         level: 'master',
@@ -940,9 +940,9 @@ const data = [
       {
         key: 'MH55_002',
         name: {
-          en: 'Master\'s programme in Pharmaceutical Research, Development and Safety',
-          fi: 'Master\'s programme in Pharmaceutical Research, Development and Safety',
-          sv: 'Master\'s programme in Pharmaceutical Research, Development and Safety',
+          en: "Master's programme in Pharmaceutical Research, Development and Safety",
+          fi: "Master's programme in Pharmaceutical Research, Development and Safety",
+          sv: "Master's programme in Pharmaceutical Research, Development and Safety",
         },
         level: 'master',
         companionFaculties: [],
@@ -1570,9 +1570,9 @@ const data = [
       {
         key: 'MH80_008', // This one is mostly a mystery, hard to find information.
         name: {
-          fi: 'Erasmus-Mundus Master\'s Programme in Plant Breeding',
-          en: 'Erasmus-Mundus Master\'s Programme in Plant Breeding',
-          sv: 'Erasmus-Mundus Master\'s Programme in Plant Breeding',
+          fi: "Erasmus-Mundus Master's Programme in Plant Breeding",
+          en: "Erasmus-Mundus Master's Programme in Plant Breeding",
+          sv: "Erasmus-Mundus Master's Programme in Plant Breeding",
         },
         level: 'master',
         companionFaculties: [], // best guess
@@ -1668,7 +1668,7 @@ const data = [
     },
     programmes: [],
     independentInstitute: true,
-  }
+  },
 ]
 
 module.exports = {

@@ -1,6 +1,6 @@
 const morgan = require('morgan')
 const { inProduction } = require('../util/config')
-const logger = require('../util/logger')
+import logger from '../util/logger'
 
 const accessLogger = morgan((tokens, req, res) => {
   const { uid } = req.headers
