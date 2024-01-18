@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "docker-compose up",
-    "start:dev": "NODE_ENV=development nodemon src/index.js",
-    "start:prod": "node src/index.js",
+    "start:dev": "NODE_ENV=development nodemon --exec node --loader ts-node/esm src/index.js",
+    "start:prod": "node build/src/index.js",
+    "build": "tsc",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },
