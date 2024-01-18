@@ -1,21 +1,27 @@
-const isNumber = (value) => !Number.isNaN(parseInt(value, 10))
+const isNumber = (value: string) => !Number.isNaN(parseInt(value, 10))
 
-const normalizeOrganisationCode = (r) => {
-  if (r.startsWith('T')) {
-    return r.replace('T', '7')
+/**
+ * TODO: Better explanation needed. Remove hardcodings
+ */
+export const normalizeOrganisationCode = (code: string) => {
+  if (code.startsWith('T')) {
+    return code.replace('T', '7')
   }
-  if (!r.includes('_')) {
-    return r
+  if (!code.includes('_')) {
+    return code
   }
 
-  const [left, right] = r.split('_')
+  const [left, right] = code.split('_')
   const prefix = [...left].filter(isNumber).join('')
   const suffix = `${left[0]}${right}`
   const providercode = `${prefix}0-${suffix}`
   return providercode
 }
 
-const mapToDegreeCode = (organisationCode) => {
+/**
+ * TODO: Better explanation needed. Remove hardcodings
+ */
+export const mapToDegreeCode = (organisationCode: string) => {
   if (!organisationCode) return ''
 
   const isKielikeskusOrAvoin = ['H906', 'H930'].includes(organisationCode)
@@ -40,12 +46,7 @@ const mapToDegreeCode = (organisationCode) => {
 // Year starting month
 const MONTH = 8
 
-/**
- *
- * @param {Date | string | number} date
- * @return {Date} first day of study year
- */
-const startOfStudyYear = (date) => {
+export const startOfStudyYear = (date: Date|string|number) => {
   let d = null
   if (typeof date !== 'object') {
     d = new Date(date)
@@ -56,10 +57,4 @@ const startOfStudyYear = (date) => {
   const year = d.getFullYear() - (d.getMonth() + 1 < MONTH ? 1 : 0)
 
   return new Date(`${year}-${MONTH}-01`)
-}
-
-module.exports = {
-  normalizeOrganisationCode,
-  mapToDegreeCode,
-  startOfStudyYear,
 }
