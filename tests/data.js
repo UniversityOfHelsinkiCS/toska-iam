@@ -1,4 +1,4 @@
-export const NO_RIGHTS_USER = {
+const NO_RIGHTS_USER = {
   id: 'user-1',
   iamGroups: [],
 }

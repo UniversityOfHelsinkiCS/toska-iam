@@ -552,10 +552,8 @@ module.exports = {
   dekaaniIamToFaculty,
   iamToFaculty,
   opetusVaradekaani,
-  getStudyLeaderGroup,
   isStudyLeaderGroup,
   relevantIAMs,
   relevantOrganisations,
   isKatselmusViewer,
-  ANY,
 }

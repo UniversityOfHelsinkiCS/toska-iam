@@ -42,19 +42,3 @@ export const mapToDegreeCode = (organisationCode: string) => {
   const code = `${masters ? 'M' : 'K'}H${start.substr(0, 2)}_${end.substr(-3)}`
   return code
 }
-
-// Year starting month
-const MONTH = 8
-
-export const startOfStudyYear = (date: Date|string|number) => {
-  let d = null
-  if (typeof date !== 'object') {
-    d = new Date(date)
-  } else {
-    d = date
-  }
-
-  const year = d.getFullYear() - (d.getMonth() + 1 < MONTH ? 1 : 0)
-
-  return new Date(`${year}-${MONTH}-01`)
-}
