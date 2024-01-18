@@ -2,7 +2,7 @@ const express = require('express')
 const Sentry = require('@sentry/node')
 
 const { PORT, inProduction } = require('./util/config')
-const initializeSentry = require('./util/sentry')
+const { initializeSentry } = require('./util/sentry')
 import logger from './util/logger'
 
 const errorHandler = require('./middleware/errors')
