@@ -47,6 +47,10 @@
   "nodemonConfig": {
     "ignore": [
       "tests"
-    ]
+    ],
+    "watch": [
+      "src"
+    ],
+    "ext": "js,ts,json"
   }
 }
