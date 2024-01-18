@@ -123,14 +123,14 @@ const getKosu = (hyGroups) => {
 
 /**
  * Needed for Oodikone
- * Grant katselmusViewer special group, which means that the user can see oodikone's 
+ * Grant katselmusViewer special group, which means that the user can see oodikone's
  * evaluationoverview which is linked in tilannekuvalomake
  * @param {string[]} hyGroups
  * @returns katselmusViewer special group
  */
 const getKatselmusViewer = (hyGroups) => {
   const katselmusViewer = hyGroups.some(isKatselmusViewer)
-  console.log({ katselmusViewer, hyGroups, isKatselmusViewer })
+
   if (katselmusViewer) {
     return { specialGroup: { katselmusViewer: true } }
   }
@@ -144,7 +144,15 @@ const getKatselmusViewer = (hyGroups) => {
 const getSpecialGroups = (hyGroups) => {
   let specialGroup = {}
 
-  ;[getAdmin, getSuperAdmin, getOpenUni, getHyOne, getJory, getKosu, getKatselmusViewer]
+  ;[
+    getAdmin,
+    getSuperAdmin,
+    getOpenUni,
+    getHyOne,
+    getJory,
+    getKosu,
+    getKatselmusViewer,
+  ]
     .map((f) => f(hyGroups))
     .forEach(({ specialGroup: newSpecialGroup }) => {
       specialGroup = { ...specialGroup, ...newSpecialGroup }

@@ -430,18 +430,20 @@ const oodikoneIams = [
   'hy-ypa-henkilosto',
 ]
 
-const katselmusViewerIams = ['grp-katselmus-ttdk',
-'grp-katselmus-oiktdk',
-'grp-katselmus-ltdk',
-'grp-katselmus-humtdk',
-'grp-katselmus-mltdk',
-'grp-katselmus-ftdk',
-'grp-katselmus-bytdk',
-'grp-katselmus-ktdk',
-'grp-katselmus-valttdk',
-'grp-katselmus-sockom',
-'grp-katselmus-mmtdk',
-'grp-katselmus-eltdk']
+const katselmusViewerIams = [
+  'grp-katselmus-ttdk',
+  'grp-katselmus-oiktdk',
+  'grp-katselmus-ltdk',
+  'grp-katselmus-humtdk',
+  'grp-katselmus-mltdk',
+  'grp-katselmus-ftdk',
+  'grp-katselmus-bytdk',
+  'grp-katselmus-ktdk',
+  'grp-katselmus-valttdk',
+  'grp-katselmus-sockom',
+  'grp-katselmus-mmtdk',
+  'grp-katselmus-eltdk',
+]
 
 const isSuperAdminIam = (iam) => superAdminGroups.includes(iam)
 

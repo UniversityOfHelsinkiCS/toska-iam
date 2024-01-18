@@ -1,9 +1,6 @@
-import { baseUrl } from './config'
+import { api } from './utils'
 import { ALL_USERS } from './data'
 
 export const seed = async () => {
-  await fetch(`${baseUrl}/test/users`, {
-    body: ALL_USERS,
-    method: 'POST',
-  })
+  await api.post('test/users', ALL_USERS)
 }
