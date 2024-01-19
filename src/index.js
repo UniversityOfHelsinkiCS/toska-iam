@@ -6,7 +6,7 @@ const { initializeSentry } = require('./util/sentry')
 import logger from './util/logger'
 
 const errorHandler = require('./middleware/errors')
-const accessLogger = require('./middleware/access')
+const accessLogger = require('./middleware/accessLogger')
 
 const {
   relevantIAMs,
