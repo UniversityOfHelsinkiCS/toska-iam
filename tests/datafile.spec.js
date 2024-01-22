@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { facultyMap, data } from "../src/auth/data";
+import { FACULTY_MAP, data } from "../src/auth/data";
 
 describe('Organisation data', () => {
 
@@ -52,7 +52,7 @@ describe('Organisation data', () => {
       // Programme should have valid companion faculties
       expect(programme).toHaveProperty('companionFaculties')
       programme.companionFaculties.forEach(facultyId => {
-        expect(facultyMap).toHaveProperty(facultyId)
+        expect(FACULTY_MAP).toHaveProperty(facultyId)
       })
 
       // Programme should define whether its international or not
@@ -62,8 +62,8 @@ describe('Organisation data', () => {
   })
 
   it('Facultymap should map to actual faculty in data', () => {
-    Object.keys(facultyMap).forEach(facultyId => {
-      const code = facultyMap[facultyId]
+    Object.keys(FACULTY_MAP).forEach(facultyId => {
+      const code = FACULTY_MAP[facultyId]
       expect(data).toContainEqual(expect.objectContaining({ code }))
     })
   })

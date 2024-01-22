@@ -1,4 +1,4 @@
-const {
+import {
   isSuperAdminIam,
   isAdminIam,
   isOpenUniIam,
@@ -11,13 +11,13 @@ const {
   isEmployeeIam,
   iamToDoctoralSchool,
   kosuIamToFaculties,
-  dekaaniIamToFaculty,
   opetusVaradekaani,
   isStudyLeaderGroup,
   isKatselmusViewer,
-} = require('./IAMConfig')
-const { data } = require('./data')
-const { mapToDegreeCode } = require('./common')
+  dekaaniIamToFaculty
+} from './IAMConfig'
+import { data } from './data'
+import { mapToDegreeCode } from './common'
 
 /**
  * Return given access to all programmes where predicate is true

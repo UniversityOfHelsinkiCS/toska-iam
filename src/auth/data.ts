@@ -1,4 +1,6 @@
-export const facultyMap = {
+import { TranslatedName } from "../types";
+
+export const FACULTY_MAP = {
   teologinen: 'H10',
   oikeustieteellinen: 'H20',
   lääketieteellinen: 'H30',
@@ -12,9 +14,30 @@ export const facultyMap = {
   'maatalous-metsätieteellinen': 'H80',
   eläinlääketieteellinen: 'H90',
   kielikeskus: 'H906',
+} as const;
+
+export type FacultyCode = typeof FACULTY_MAP[keyof typeof FACULTY_MAP];
+
+export type FacultyKey = keyof typeof FACULTY_MAP;
+
+export type Faculty = {
+  readonly code: FacultyCode;
+  readonly name: TranslatedName;
+  readonly programmes: Readonly<Programme[]>;
+  readonly independentInstitute?: boolean;
 }
 
-export const data = [
+export type ProgrammeLevel = 'bachelor' | 'master' | 'doctoral';
+
+export type Programme = {
+  readonly key: string;
+  readonly name: TranslatedName;
+  readonly level: ProgrammeLevel;
+  readonly companionFaculties: Readonly<FacultyKey[]>;
+  readonly international: boolean;
+}
+
+export const data: Readonly<Faculty[]> = [
   {
     code: 'H10',
     name: {
@@ -1669,9 +1692,5 @@ export const data = [
     programmes: [],
     independentInstitute: true,
   },
-]
+] as const;
 
-module.exports = {
-  data,
-  facultyMap,
-}

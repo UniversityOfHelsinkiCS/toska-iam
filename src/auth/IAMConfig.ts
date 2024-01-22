@@ -1,5 +1,5 @@
 import { normalizeOrganisationCode } from './common'
-import { facultyMap, data } from './data'
+import { FACULTY_MAP, data } from './data'
 
 const ANY = 'ANY'
 
@@ -482,15 +482,15 @@ const iamToOrganisationCode = (iam) => {
 
 const kosuIamToFaculties = (iam) => {
   const faculties = kosuFacultyMap[iam]
-  if (!faculties?.length > 0) return []
+  if (!(faculties?.length > 0)) return []
 
-  return faculties.map((f) => facultyMap[f])
+  return faculties.map((f) => FACULTY_MAP[f])
 }
 
 const dekaaniIamToFaculty = (iam) => {
   const faculty = dekaaniFacultyMap[iam]
   if (!faculty) return null
-  return facultyMap[faculty]
+  return FACULTY_MAP[faculty]
 }
 
 const iamToFaculty = (iam) => {
@@ -498,13 +498,13 @@ const iamToFaculty = (iam) => {
 
   for (const f of faculties) {
     if (facultyIamsMap[f].includes(iam)) {
-      const faculty = data.find(({ code }) => code === facultyMap[f])
+      const faculty = data.find(({ code }) => code === FACULTY_MAP[f])
       return faculty
     }
   }
 }
 
-export const relevantIAMs = []
+const relevantIAMs = []
   .concat(Object.keys(joryMap))
   .concat(Object.keys(kojoMap))
   .concat(Object.values(kojoMap))
@@ -536,7 +536,7 @@ const relevantOrganisations = RELEVANT_ORGANISATION_CODES.concat(
   ),
 )
 
-module.exports = {
+export {
   isSuperAdminIam,
   isAdminIam,
   isOpenUniIam,
