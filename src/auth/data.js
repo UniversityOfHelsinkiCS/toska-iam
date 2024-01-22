@@ -1,4 +1,4 @@
-const facultyMap = {
+export const facultyMap = {
   teologinen: 'H10',
   oikeustieteellinen: 'H20',
   lääketieteellinen: 'H30',
@@ -14,7 +14,7 @@ const facultyMap = {
   kielikeskus: 'H906',
 }
 
-const data = [
+export const data = [
   {
     code: 'H10',
     name: {
@@ -1670,11 +1670,6 @@ const data = [
     independentInstitute: true,
   },
 ]
-
-export {
-  data,
-  facultyMap,
-}
 
 module.exports = {
   data,

@@ -1,5 +1,5 @@
 import { normalizeOrganisationCode } from './common'
-const { facultyMap, data } = require('./data')
+import { facultyMap, data } from './data'
 
 const ANY = 'ANY'
 
