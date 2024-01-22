@@ -1,11 +1,11 @@
-const Sequelize = require('sequelize')
-const { Umzug, SequelizeStorage } = require('umzug')
-const { DATABASE_URL } = require('../util/config')
+import { Sequelize } from 'sequelize'
+import { Umzug, SequelizeStorage } from 'umzug'
+import { DATABASE_URL } from '../util/config'
 import logger from '../util/logger'
 
 const DB_CONNECTION_RETRY_LIMIT = 10
 
-const sequelize = new Sequelize(DATABASE_URL, { logging: false })
+export const sequelize = new Sequelize(DATABASE_URL, { logging: false })
 
 const runMigrations = async () => {
   const migrator = new Umzug({
@@ -27,9 +27,9 @@ const testConnection = async () => {
   await runMigrations()
 }
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
-const connectToDatabase = async (attempt = 0) => {
+export const connectToDatabase = async (attempt = 0) => {
   try {
     await testConnection()
   } catch (err) {

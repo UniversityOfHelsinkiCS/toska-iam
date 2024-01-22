@@ -17,7 +17,7 @@ const { getIAMRights } = require('./auth/IAMRights')
 const { data } = require('./auth/data')
 
 const { connectToDatabase } = require('./db/connection')
-const { User } = require('./db/models')
+const User = require('./db/models/user')
 const testRouter = require('./util/testRouter')
 
 initializeSentry()
