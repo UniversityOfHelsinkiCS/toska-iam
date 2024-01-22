@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { api } from "./utils";
+import { api } from "./util/utils";
 
 describe.concurrent('Lomake', () => {
   it('Katselmus iam gives the katselmus special group', async () => {

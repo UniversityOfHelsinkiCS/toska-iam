@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { api } from "./utils";
+import { api } from "./util/utils";
 
 describe.concurrent('Dekaani', () => {
   it('gets READ access to faculty and each programme of faculty', async () => {

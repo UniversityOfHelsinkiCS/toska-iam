@@ -1,6 +1,6 @@
 import { expect, test, beforeAll } from 'vitest'
-import { api } from './utils'
-import { seed } from './seed'
+import { api } from './util/utils'
+import { seed } from './util/seed'
 import { mapToDegreeCode } from '../src/auth/common'
 
 beforeAll(async () => {

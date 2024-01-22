@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { api } from "./utils";
+import { api } from "./util/utils";
 import { mapToDegreeCode } from "../src/auth/common";
 
 const degreeCode = mapToDegreeCode('200-K001')
