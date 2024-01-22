@@ -14,7 +14,7 @@ const {
   iamToFaculty,
 } = require('./auth/IAMConfig')
 const { getIAMRights } = require('./auth/IAMRights')
-const { data } = require('./auth/data')
+const { FACULTIES } = require('./organisation/faculties')
 
 const { connectToDatabase } = require('./db/connection')
 const User = require('./db/models/user')
@@ -61,7 +61,7 @@ app.get('/access-to-all', (_req, res) => {
   return res.send({ ...access, specialGroup })
 })
 
-app.get('/organisation-data', (_req, res) => res.send(data))
+app.get('/organisation-data', (_req, res) => res.send(FACULTIES))
 
 app.get('/all-access', async (_req, res) => {
   const users = await User.findAll()

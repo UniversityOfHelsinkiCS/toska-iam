@@ -16,7 +16,7 @@ import {
   isKatselmusViewer,
   dekaaniIamToFaculty
 } from './IAMConfig'
-import { data } from './data'
+import { FACULTIES } from '../organisation/faculties'
 import { mapToDegreeCode } from './common'
 
 /**
@@ -28,7 +28,7 @@ import { mapToDegreeCode } from './common'
  */
 const getAllProgrammeAccess = (accessLevel, where) => {
   const access = {}
-  data.forEach((faculty) => {
+  FACULTIES.forEach((faculty) => {
     faculty.programmes.forEach((program) => {
       if (where?.(program) === false) return
       access[program.key] = { ...accessLevel }
@@ -195,7 +195,7 @@ const getFacultyReadingRights = (hyGroups) => {
     .filter(Boolean)
   const access = {}
   facultyCodes.forEach((fc) => {
-    const faculty = data.find((faculty) => faculty.code === fc)
+    const faculty = FACULTIES.find((faculty) => faculty.code === fc)
     const programmeCodes = faculty.programmes.map((p) => p.key)
     programmeCodes.forEach((code) => {
       access[code] = { read: true, write: false, admin: false }
@@ -214,7 +214,7 @@ const getFacultyAdminRights = (hyGroups) => {
 
   const access = {}
   facultyCodes.forEach((fc) => {
-    const faculty = data.find((faculty) => faculty.code === fc)
+    const faculty = FACULTIES.find((faculty) => faculty.code === fc)
     const programmeCodes = faculty.programmes.map((p) => p.key)
     programmeCodes.forEach((code) => {
       access[code] = { read: true, write: true, admin: true }

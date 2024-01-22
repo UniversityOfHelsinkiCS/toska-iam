@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { FACULTY_MAP, data } from "../src/auth/data";
+import { FACULTIES as data } from "../src/organisation/faculties";
+import { FACULTY_MAP } from "../src/organisation/types";
 
 describe('Organisation data', () => {
 

@@ -1,5 +1,6 @@
 import { normalizeOrganisationCode } from './common'
-import { FACULTY_MAP, data } from './data'
+import { FACULTIES } from '../organisation/faculties'
+import { FACULTY_MAP } from '../organisation/types'
 
 const ANY = 'ANY'
 
@@ -498,7 +499,7 @@ const iamToFaculty = (iam) => {
 
   for (const f of faculties) {
     if (facultyIamsMap[f].includes(iam)) {
-      const faculty = data.find(({ code }) => code === FACULTY_MAP[f])
+      const faculty = FACULTIES.find(({ code }) => code === FACULTY_MAP[f])
       return faculty
     }
   }
@@ -527,9 +528,9 @@ const RELEVANT_ORGANISATION_CODES = [
 ]
 
 const relevantOrganisations = RELEVANT_ORGANISATION_CODES.concat(
-  data.map((faculty) => faculty.code),
+  FACULTIES.map((faculty) => faculty.code),
 ).concat(
-  data.flatMap((faculty) =>
+  FACULTIES.flatMap((faculty) =>
     faculty.programmes.map((programme) =>
       normalizeOrganisationCode(programme.key),
     ),
