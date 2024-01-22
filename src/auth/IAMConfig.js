@@ -1,4 +1,4 @@
-const { normalizeOrganisationCode } = require('./common')
+import { normalizeOrganisationCode } from './common'
 const { facultyMap, data } = require('./data')
 
 const ANY = 'ANY'
@@ -504,7 +504,7 @@ const iamToFaculty = (iam) => {
   }
 }
 
-const relevantIAMs = []
+export const relevantIAMs = []
   .concat(Object.keys(joryMap))
   .concat(Object.keys(kojoMap))
   .concat(Object.values(kojoMap))
