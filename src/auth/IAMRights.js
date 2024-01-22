@@ -347,6 +347,4 @@ const getIAMRights = (hyGroups) => {
   return { access, specialGroup }
 }
 
-module.exports = {
-  getIAMRights,
-}
+export default getIAMRights

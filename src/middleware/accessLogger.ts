@@ -32,4 +32,4 @@ const formatFunction = (tokens: TokenIndexer, req: Request, res: Response) => {
 
 const accessLogger = morgan(formatFunction)
 
-module.exports = accessLogger
+export default accessLogger
