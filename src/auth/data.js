@@ -1671,6 +1671,11 @@ const data = [
   },
 ]
 
+export {
+  data,
+  facultyMap,
+}
+
 module.exports = {
   data,
   facultyMap,
