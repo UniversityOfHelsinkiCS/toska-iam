@@ -1,4 +1,5 @@
 import * as Sentry from '@sentry/node'
+import '@sentry/tracing'
 import { inProduction } from './config'
 
 export const initializeSentry = () => {
