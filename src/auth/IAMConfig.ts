@@ -444,6 +444,12 @@ const katselmusViewerIams = [
   'grp-katselmus-sockom',
   'grp-katselmus-mmtdk',
   'grp-katselmus-eltdk',
+  'grp-katselmus-projektiryhma',
+  'grp-katselmus-arviointiryhma',
+  'hy-johtoryhma-ja-kansleri',
+  'hy-tutkijakoulu-johtokunta',
+  'hy-tine',
+  'hy-one',
 ]
 
 const isSuperAdminIam = (iam) => superAdminGroups.includes(iam)
