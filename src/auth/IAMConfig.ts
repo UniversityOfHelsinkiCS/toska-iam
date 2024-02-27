@@ -381,7 +381,7 @@ const dekaaniFacultyMap = {
   'hy-ktdk-dekanaatti': 'kasvatustieteellinen',
   'hy-valttdk-dekanaatti': 'valtiotieteellinen',
   'hy-sskh-rehtoraatti': 'svenska',
-  'hy-mmtdk-dekanaatti': 'maatalous -metsätieteellinen',
+  'hy-mmtdk-dekanaatti': 'maatalous-metsätieteellinen',
   'hy-eltdk-dekanaatti': 'eläinlääketieteellinen',
 }
 
