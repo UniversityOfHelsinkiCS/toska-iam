@@ -14,20 +14,26 @@ import {
   opetusVaradekaani,
   isStudyLeaderGroup,
   isKatselmusViewer,
-  dekaaniIamToFaculty
+  dekaaniIamToFaculty,
 } from './IAMConfig'
 import { FACULTIES } from '../organisation/faculties'
 import { mapToDegreeCode } from './common'
 import { OrganisationAccess } from '../types'
 import { Programme } from '../organisation/types'
 
-type AccessSpecialGroupFunction = (hyGroups: string[]) => { access?: { [programmeCode: string]: OrganisationAccess }, specialGroup?: { [key: string]: boolean } }
+type AccessSpecialGroupFunction = (hyGroups: string[]) => {
+  access?: { [programmeCode: string]: OrganisationAccess }
+  specialGroup?: { [key: string]: boolean }
+}
 
 /**
  * Return given access to all programmes where predicate is true
  * (all if no predicate defined)
  */
-const getAllProgrammeAccess = (accessLevel: OrganisationAccess, where?: (program: Programme) => boolean): { [key: string]: OrganisationAccess } => {
+const getAllProgrammeAccess = (
+  accessLevel: OrganisationAccess,
+  where?: (program: Programme) => boolean,
+): { [key: string]: OrganisationAccess } => {
   const access = {}
   FACULTIES.forEach((faculty) => {
     faculty.programmes.forEach((program) => {

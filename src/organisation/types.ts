@@ -1,5 +1,5 @@
-import { TranslatedName } from "../types";
-import { FACULTIES } from "./faculties";
+import { TranslatedName } from '../types'
+import { FACULTIES } from './faculties'
 
 export const FACULTY_MAP = {
   teologinen: 'H10',
@@ -15,30 +15,30 @@ export const FACULTY_MAP = {
   'maatalous-metsätieteellinen': 'H80',
   eläinlääketieteellinen: 'H90',
   kielikeskus: 'H906',
-} as const;
+} as const
 
-export type FacultyCode = typeof FACULTY_MAP[keyof typeof FACULTY_MAP];
+export type FacultyCode = typeof FACULTY_MAP[keyof typeof FACULTY_MAP]
 
-export type FacultyKey = keyof typeof FACULTY_MAP;
+export type FacultyKey = keyof typeof FACULTY_MAP
 
 export interface Faculty {
-  readonly code: FacultyCode;
-  readonly name: TranslatedName;
-  readonly programmes: Readonly<Programme[]>;
+  readonly code: FacultyCode
+  readonly name: TranslatedName
+  readonly programmes: Readonly<Programme[]>
 }
 
 export interface IndependentInstitute extends Faculty {
-  readonly code: FacultyCode;
-  readonly name: TranslatedName;
-  readonly independentInstitute: true;
+  readonly code: FacultyCode
+  readonly name: TranslatedName
+  readonly independentInstitute: true
 }
 
-export type ProgrammeLevel = 'bachelor' | 'master' | 'doctoral';
+export type ProgrammeLevel = 'bachelor' | 'master' | 'doctoral'
 
 export type Programme = {
-  readonly key: string;
-  readonly name: TranslatedName;
-  readonly level: ProgrammeLevel;
-  readonly companionFaculties: Readonly<FacultyKey[]>;
-  readonly international: boolean;
+  readonly key: string
+  readonly name: TranslatedName
+  readonly level: ProgrammeLevel
+  readonly companionFaculties: Readonly<FacultyKey[]>
+  readonly international: boolean
 }

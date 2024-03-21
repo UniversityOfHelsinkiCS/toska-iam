@@ -1,21 +1,19 @@
-import { describe, expect, it } from "vitest";
-import { FACULTIES as data } from "../src/organisation/faculties";
-import { FACULTY_MAP } from "../src/organisation/types";
+import { describe, expect, it } from 'vitest'
+import { FACULTIES as data } from '../src/organisation/faculties'
+import { FACULTY_MAP } from '../src/organisation/types'
 
 describe('Organisation data', () => {
-
   it('Has faculties in a valid format', () => {
     const faculties = data
-    
+
     // There should be 13 faculties
     expect(faculties.length).toBe(13)
 
     // Each faculty code should be unique
-    const facultyCodes = faculties.map(faculty => faculty.code)
+    const facultyCodes = faculties.map((faculty) => faculty.code)
     expect(facultyCodes.length).toBe(new Set(facultyCodes).size)
 
-    faculties.forEach(faculty => {
-
+    faculties.forEach((faculty) => {
       // Faculty should have a name in fi, en and sv
       expect(faculty).toHaveProperty('name')
       expect(faculty.name).toHaveProperty('fi')
@@ -30,13 +28,13 @@ describe('Organisation data', () => {
   })
 
   it('Has programmes in valid format', () => {
-    const programmes = data.flatMap(faculty => faculty.programmes)
+    const programmes = data.flatMap((faculty) => faculty.programmes)
 
     // Each programme key should be unique
-    const programmeKeys = programmes.map(programme => programme.key)
+    const programmeKeys = programmes.map((programme) => programme.key)
     expect(programmeKeys.length).toBe(new Set(programmeKeys).size)
 
-    programmes.forEach(programme => {
+    programmes.forEach((programme) => {
       // Programme should have a key
       expect(programme).toHaveProperty('key')
 
@@ -52,7 +50,7 @@ describe('Organisation data', () => {
 
       // Programme should have valid companion faculties
       expect(programme).toHaveProperty('companionFaculties')
-      programme.companionFaculties.forEach(facultyId => {
+      programme.companionFaculties.forEach((facultyId) => {
         expect(FACULTY_MAP).toHaveProperty(facultyId)
       })
 
@@ -63,7 +61,7 @@ describe('Organisation data', () => {
   })
 
   it('Facultymap should map to actual faculty in data', () => {
-    Object.keys(FACULTY_MAP).forEach(facultyId => {
+    Object.keys(FACULTY_MAP).forEach((facultyId) => {
       const code = FACULTY_MAP[facultyId]
       expect(data).toContainEqual(expect.objectContaining({ code }))
     })

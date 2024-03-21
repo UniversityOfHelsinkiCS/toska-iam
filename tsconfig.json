@@ -15,7 +15,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node16",
-    "allowUnreachableCode": false,
+    "allowUnreachableCode": false
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "build", "tests", "scripts", "prettier.config.js"]

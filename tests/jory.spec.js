@@ -1,17 +1,16 @@
-import { describe, expect, it } from "vitest";
-import { api } from "./util/utils";
-import { mapToDegreeCode } from "../src/auth/common";
+import { describe, expect, it } from 'vitest'
+import { api } from './util/utils'
+import { mapToDegreeCode } from '../src/auth/common'
 
 const degreeCode = mapToDegreeCode('200-K001')
 
 describe.concurrent('Jory', () => {
-
   it('Gets read access to program', async () => {
     const res = await api.post('', {
       userId: 'oiktdk-jory-member',
       iamGroups: ['hy-oiktdk-on-jory'],
     })
-  
+
     expect(res.status).toBe(200)
     const json = await res.json()
     expect(json).toHaveProperty(degreeCode)
@@ -25,7 +24,7 @@ describe.concurrent('Jory', () => {
       userId: 'oiktdk-jory-member',
       iamGroups: ['hy-oiktdk-on-jory'],
     })
-  
+
     expect(res.status).toBe(200)
     const json = await res.json()
     expect(json).toHaveProperty('specialGroup')
@@ -38,7 +37,7 @@ describe.concurrent('Jory', () => {
       userId: 'oikis-kojo',
       iamGroups: ['hy-oiktdk-on-jory', 'hy-oiktdk-kandi-kojot'],
     })
-  
+
     expect(res.status).toBe(200)
     expect(await res.json()).toEqual({
       [degreeCode]: {
@@ -51,5 +50,4 @@ describe.concurrent('Jory', () => {
       },
     })
   })
-
 })

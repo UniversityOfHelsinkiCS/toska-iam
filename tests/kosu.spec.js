@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { api } from "./util/utils";
+import { describe, expect, it } from 'vitest'
+import { api } from './util/utils'
 
 describe.concurrent('Kosu', () => {
   it('gets READ access to each faculty and programme of location', async () => {
@@ -100,5 +100,4 @@ describe.concurrent('Kosu', () => {
     expect(access.specialGroup).toHaveProperty('kosu')
     expect(access.specialGroup.kosu).toBe(true)
   })
-
-});
+})

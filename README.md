@@ -5,17 +5,18 @@
 Jämpti autorisaatio mankeli IAM:eille
 
 ## Usage
+
 e.g. `POST /`
+
 ```json
 {
   "userId": "hy-hlo-12345678",
-  "iamGroups": [
-    "hy-employees",
-    "grp-toska"
-  ]
+  "iamGroups": ["hy-employees", "grp-toska"]
 }
 ```
-Response 
+
+Response
+
 ```json
 {
   "500-M009": {
@@ -33,7 +34,9 @@ Response
   }
 }
 ```
+
 ### Other routes
+
 `GET` `/ping`, `/access-to-all`, `/organisation-data`, `/all-access`, `/iam-groups`, `/:userId`
 
 `POST` `user-organisations`

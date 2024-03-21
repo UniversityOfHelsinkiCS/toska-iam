@@ -10,4 +10,3 @@ export const initializeSentry = () => {
     tracesSampleRate: 1.0,
   })
 }
-

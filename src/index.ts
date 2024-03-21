@@ -8,7 +8,11 @@ import logger from './util/logger'
 import errorHandler from './middleware/errors'
 import accessLogger from './middleware/accessLogger'
 
-import { relevantIAMs, relevantOrganisations, iamToFaculty } from './auth/IAMConfig'
+import {
+  relevantIAMs,
+  relevantOrganisations,
+  iamToFaculty,
+} from './auth/IAMConfig'
 import getIAMRights from './auth/IAMRights'
 import { FACULTIES } from './organisation/faculties'
 

@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { api } from "./util/utils";
+import { describe, expect, it } from 'vitest'
+import { api } from './util/utils'
 
 describe.concurrent('Dekaani', () => {
   it('gets READ access to faculty and each programme of faculty', async () => {
@@ -51,5 +51,4 @@ describe.concurrent('Dekaani', () => {
       expect(access[programme].admin).toBe(true)
     })
   })
-
-});
+})

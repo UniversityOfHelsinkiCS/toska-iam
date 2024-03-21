@@ -1,9 +1,9 @@
 import { STRING, ARRAY, InferAttributes, Model } from 'sequelize'
-import { sequelize } from '../connection';
+import { sequelize } from '../connection'
 
 class User extends Model<InferAttributes<User>> {
-  declare id: string;
-  declare iamGroups: string[];
+  declare id: string
+  declare iamGroups: string[]
 }
 
 User.init(

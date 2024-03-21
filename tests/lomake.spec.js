@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
-import { api } from "./util/utils";
+import { describe, expect, it } from 'vitest'
+import { api } from './util/utils'
 
 describe.concurrent('Lomake', () => {
   it('Katselmus iam gives the katselmus special group', async () => {
@@ -9,7 +9,7 @@ describe.concurrent('Lomake', () => {
       userId: 'katselmus',
       iamGroups: [someKatselmusIam],
     })
-  
+
     expect(res.status).toBe(200)
     const json = await res.json()
     expect(json).toHaveProperty('specialGroup')

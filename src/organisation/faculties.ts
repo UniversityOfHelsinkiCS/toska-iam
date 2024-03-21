@@ -1,4 +1,4 @@
-import { Faculty, IndependentInstitute } from "./types";
+import { Faculty, IndependentInstitute } from './types'
 
 const teologinen: Faculty = {
   code: 'H10',
@@ -1049,10 +1049,7 @@ const bioYmparistotieteellinen: Faculty = {
         sv: 'Magisterprogrammet i miljöförändringar och global hållbarhet',
       },
       level: 'master',
-      companionFaculties: [
-        'maatalous-metsätieteellinen',
-        'valtiotieteellinen',
-      ],
+      companionFaculties: ['maatalous-metsätieteellinen', 'valtiotieteellinen'],
       international: true,
     },
     {
@@ -1680,5 +1677,5 @@ export const FACULTIES: Readonly<Faculty[]> = [
   sockom,
   maatalousMetsatieteellinen,
   elainlaaketieteellinen,
-  kielikeskus
+  kielikeskus,
 ] as const

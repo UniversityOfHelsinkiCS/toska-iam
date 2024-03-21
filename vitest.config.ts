@@ -6,6 +6,6 @@ export default defineConfig({
       provider: 'v8',
       include: ['src/**/*'],
       exclude: ['src/db/migrations/**/*'],
-    }
+    },
   },
 })

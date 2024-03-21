@@ -9,6 +9,9 @@
     "start:prod": "node build/index.js",
     "build": "tsc",
     "test": "vitest",
+    "lint": "eslint . --ext .ts --ext .js",
+    "lint:fix": "eslint . --ext .ts --ext .js --fix",
+    "format": "prettier --write .",
     "coverage": "vitest run --coverage"
   },
   "repository": {
