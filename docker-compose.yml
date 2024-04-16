@@ -6,6 +6,8 @@ services:
       context: ./
       dockerfile: dev.Dockerfile
     image: jami_dev
+    env_file:
+      - .env
     environment:
       - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
       - PORT=3000

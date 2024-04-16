@@ -14,6 +14,7 @@ import {
   iamToFaculty,
 } from './auth/IAMConfig'
 import getIAMRights from './auth/IAMRights'
+import { hasFullSisuAccess } from './auth/sisuRoles'
 import { FACULTIES } from './organisation/faculties'
 
 import { connectToDatabase } from './db/connection'
@@ -33,14 +34,18 @@ app.use(accessLogger)
 
 app.get('/ping', (_req, res) => res.send('pong'))
 
-app.post('/', (req, res) => {
-  const { userId, iamGroups = [] } = req.body
+app.post('/', async (req, res) => {
+  const { userId, iamGroups = [], getSisuAccess = false } = req.body
 
   const relevantIamGroups = iamGroups.filter((iam) =>
     relevantIAMs.includes(iam),
   )
 
   const { access, specialGroup } = getIAMRights(relevantIamGroups)
+
+  if (getSisuAccess) {
+    specialGroup.fullSisuAccess = await hasFullSisuAccess(userId)
+  }
 
   if (userId && iamGroups) User.upsert({ id: userId, iamGroups })
 

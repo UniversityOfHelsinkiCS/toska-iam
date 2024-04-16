@@ -1,10 +1,13 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
-const PORT = process.env.PORT
+export const PORT = process.env.PORT
 
-const inProduction = process.env.NODE_ENV === 'production'
+export const inProduction = process.env.NODE_ENV === 'production'
 
-const DATABASE_URL = process.env.DATABASE_URL
+export const DATABASE_URL = process.env.DATABASE_URL
 
-export { DATABASE_URL, PORT, inProduction }
+export const importerUrl =
+  'https://api-toska.apps.ocp-prod-0.k8s.it.helsinki.fi/importer'
+
+export const importerToken = process.env.IMPORTER_DB_API_TOKEN || ''
