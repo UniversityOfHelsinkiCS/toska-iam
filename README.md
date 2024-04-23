@@ -6,6 +6,8 @@ Jämpti autorisaatio mankeli IAM:eille
 
 ## Running locally
 
+Requirements: docker, npm (recommended)
+
 ```sh
 $ docker compose up
 # If this does not work try:
