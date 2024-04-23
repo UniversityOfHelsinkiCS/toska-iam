@@ -6,9 +6,15 @@ Jämpti autorisaatio mankeli IAM:eille
 
 ## Running locally
 
+```sh
+$ docker compose up
+# If this does not work try:
+$ npm i
+$ npm start
 ```
-npm start
-```
+
+Jami API should now be available at http://localhost:3000/. Configure the port for your needs in `docker-compose.yml`.
+
 
 ## API
 
