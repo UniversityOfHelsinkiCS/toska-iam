@@ -4,7 +4,13 @@
 
 Jämpti autorisaatio mankeli IAM:eille
 
-## Usage
+## Running locally
+
+```
+npm start
+```
+
+## API
 
 e.g. `POST /`
 
