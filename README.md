@@ -20,7 +20,7 @@ Jami API should now be available at http://localhost:3000/. Configure the port f
 
 ## API
 
-`POST /`
+### `POST /`
 
 - Body
 
@@ -51,7 +51,15 @@ Jami API should now be available at http://localhost:3000/. Configure the port f
 }
 ```
 
-`GET /:userId`
+### `POST /user-organisations`
+
+- Response
+
+```ts
+Array<Faculty>
+```
+
+### `GET /:userId`
 
 - Response
 
@@ -62,7 +70,7 @@ Jami API should now be available at http://localhost:3000/. Configure the port f
 }
 ```
 
-`GET /access-to-all`
+### `GET /access-to-all`
 
 - Response
 
@@ -85,11 +93,11 @@ Jami API should now be available at http://localhost:3000/. Configure the port f
 }
 ```
 
-`GET /organisation-data`
+### `GET /organisation-data`
 
 - Response: the FACULTIES object from [./src/organisation/faculties.ts](./src/organisation/faculties.ts)
 
-`GET /all-access`
+### `GET /all-access`
 
 - Response: all user's iam groups and their computed access rights:
 
@@ -116,7 +124,7 @@ Jami API should now be available at http://localhost:3000/. Configure the port f
   ]
 ```
 
-`GET /iam-groups`
+### `GET /iam-groups`
 
 - Response: all unique iam groups in Jami DB:
 
@@ -126,6 +134,4 @@ Jami API should now be available at http://localhost:3000/. Configure the port f
 
 ### Other routes
 
-`GET` `/ping`
-
-`POST` `user-organisations`
+`GET` `/ping` => `pong`
