@@ -6,16 +6,22 @@ Jämpti autorisaatio mankeli IAM:eille
 
 ## Running locally
 
-Requirements: docker, npm (recommended)
+Requirements: docker, npm
 
 ```sh
-$ docker compose up
-# If this does not work try:
+# Install dependencies
 $ npm i
-$ npm start
+# Start the server (you can also use npm start)
+$ docker compose up
 ```
 
 Jami API should now be available at http://localhost:3000/. Configure the port for your needs in `docker-compose.yml`.
+
+If you need the importer client to work locally (to fetch a person's Sisu roles), you will need an api-gw token. Check documentation in GitLab for information on how to get one. If you already have a token for Oodikone, you can use that. Otherwise, select "Oodikone" when creating a new token. Once you have the token, add it to the `.env` file like this:
+
+```sh
+IMPORTER_DB_API_TOKEN=your-token-here
+```
 
 
 ## API
