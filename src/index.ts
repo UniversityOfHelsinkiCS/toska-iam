@@ -21,6 +21,7 @@ import { FACULTIES } from './organisation/faculties'
 import { connectToDatabase } from './db/connection'
 import User from './db/models/user'
 import testRouter from './util/testRouter'
+import { processInBatches } from './util/processInBatches'
 
 initializeSentry()
 
@@ -100,21 +101,18 @@ app.post('/access-and-special-groups', async (req, res) => {
     },
   })
 
-  const usersWithAccess = await Promise.all(
-    users.map(async ({ dataValues: user }) => {
+  const usersWithAccess = await processInBatches(
+    users.map(({ dataValues: user }) => user),
+    50,
+    async (user) => {
       const iamGroups = user.iamGroups.filter((iam) =>
         relevantIAMs.includes(iam),
       )
       const { access, specialGroup } = getIAMRights(iamGroups)
       specialGroup.fullSisuAccess = await hasFullSisuAccess(user.id)
 
-      return {
-        ...user,
-        iamGroups,
-        access,
-        specialGroup,
-      }
-    }),
+      return { ...user, iamGroups, access, specialGroup }
+    },
   )
 
   return res.send(usersWithAccess)
