@@ -10,7 +10,6 @@ const sisuRolesGivingFullAccess = [
   'hy-ac-opne2',
   'hy-ac-opne3',
   'hy-ac-sview',
-  'sis-role-tutoring',
 ]
 
 type UserCacheEntry = {
