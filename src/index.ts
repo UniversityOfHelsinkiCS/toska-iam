@@ -1,5 +1,6 @@
 import express from 'express'
 import * as Sentry from '@sentry/node'
+import { Op } from 'sequelize'
 
 import { PORT, inProduction } from './util/config'
 import { initializeSentry } from './util/sentry'
@@ -80,6 +81,41 @@ app.get('/all-access', async (_req, res) => {
       ...getIAMRights(iamGroups),
     }
   })
+
+  return res.send(usersWithAccess)
+})
+
+app.post('/access-and-special-groups', async (req, res) => {
+  if (!req?.body?.userIds || !Array.isArray(req.body.userIds)) {
+    return res.sendStatus(400)
+  }
+
+  const { userIds } = req.body
+  const users = await User.findAll({
+    attributes: ['id', 'iamGroups'],
+    where: {
+      id: {
+        [Op.in]: userIds,
+      },
+    },
+  })
+
+  const usersWithAccess = await Promise.all(
+    users.map(async ({ dataValues: user }) => {
+      const iamGroups = user.iamGroups.filter((iam) =>
+        relevantIAMs.includes(iam),
+      )
+      const { access, specialGroup } = getIAMRights(iamGroups)
+      specialGroup.fullSisuAccess = await hasFullSisuAccess(user.id)
+
+      return {
+        ...user,
+        iamGroups,
+        access,
+        specialGroup,
+      }
+    }),
+  )
 
   return res.send(usersWithAccess)
 })

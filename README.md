@@ -124,6 +124,40 @@ Array<Faculty>
   ]
 ```
 
+### `POST /access-and-special-groups`
+
+Like `GET /all-access`, but for a specified list of users. This endpoint also includes the information about full access to student data in Sisu.
+
+**NB!** Might be slow for large amounts of users, if Sisu access info is not in the cache (currently stored for 24 hours).
+
+- Body
+
+```json
+{
+  "userIds": ["hy-hlo-12345678", ...],
+}
+```
+
+- Response
+
+```json
+[
+  {
+    "id": "hy-hlo-12345678",
+    "iamGroups": [
+      "hy-employees",
+      "grp-toska"
+    ],
+    "access": {},
+    "specialGroup": {
+      "superAdmin": true,
+      "fullSisuAccess": true
+    }
+  },
+  ...
+]
+```
+
 ### `GET /iam-groups`
 
 - Response: all unique iam groups in Jami DB:
