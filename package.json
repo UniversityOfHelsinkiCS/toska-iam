@@ -4,8 +4,8 @@
   "description": "Microservice for Toska's IAM authentication",
   "main": "index.js",
   "scripts": {
-    "start": "docker-compose up",
-    "start:dev": "NODE_ENV=development nodemon --exec node --loader ts-node/esm src/index.ts",
+    "start": "docker compose up",
+    "start:dev": "tsx watch --clear-screen=false src/index.ts",
     "start:prod": "node build/index.js",
     "build": "tsc",
     "test": "vitest",
@@ -33,9 +33,8 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "nodemon": "^3.0.3",
     "prettier": "^2.8.1",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.7.3",
     "typescript": "^5.3.3",
     "vitest": "^1.2.0"
   },
@@ -50,14 +49,5 @@
     "sequelize": "^6.28.0",
     "umzug": "^3.2.1",
     "winston": "^3.8.2"
-  },
-  "nodemonConfig": {
-    "ignore": [
-      "tests"
-    ],
-    "watch": [
-      "src"
-    ],
-    "ext": "*.js,*.ts,*.json"
   }
 }

@@ -17,6 +17,7 @@ services:
     ports:
       - 3000:3000
     container_name: jami_dev
+    tty: true
   db:
     image: postgres:13.1
     environment:
