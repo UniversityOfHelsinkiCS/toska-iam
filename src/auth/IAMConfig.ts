@@ -17,7 +17,7 @@ const joryMap = {
   'hy-oiktdk-ibl-jory': '200-M002',
   'hy-oiktdk-ggl-jory': '200-M003',
   'hy-ltdk-psyk-jory': ['300-K001', '300-M004'], // psyk and logo slightly special
-  'hy-ltdk-spk-jory@helsinki.fi': '300-K003',
+  'hy-ltdk-spk-jory': '300-K003',
   'hy-ltdk-logo-jory': ['300-K002', '300-M005'],
   'hy-ltdk-ll-jory': '300-M001',
   'hy-ltdk-tmed-jory': '300-M002',
