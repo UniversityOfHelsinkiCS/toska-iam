@@ -1,5 +1,4 @@
 import { TranslatedName } from '../types'
-import { FACULTIES } from './faculties'
 
 export const FACULTY_MAP = {
   teologinen: 'H10',
@@ -17,7 +16,7 @@ export const FACULTY_MAP = {
   kielikeskus: 'H906',
 } as const
 
-export type FacultyCode = typeof FACULTY_MAP[keyof typeof FACULTY_MAP]
+export type FacultyCode = (typeof FACULTY_MAP)[keyof typeof FACULTY_MAP]
 
 export type FacultyKey = keyof typeof FACULTY_MAP
 

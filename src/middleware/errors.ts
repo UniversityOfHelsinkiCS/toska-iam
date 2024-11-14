@@ -10,5 +10,4 @@ const errorHandler: ErrorRequestHandler = (error, _req, _res, next) => {
   return next(error)
 }
 
-module.exports = errorHandler
 export default errorHandler

@@ -3,13 +3,12 @@ import User from '../db/models/user'
 
 const testRouter = Router()
 
-testRouter.post('/users', (req, res) => {
+testRouter.post('/users', async (req, res) => {
   const users = req.body
 
-  User.bulkCreate(users)
+  await User.bulkCreate(users)
 
   res.status(201).json(users)
 })
 
 export default testRouter
-module.exports = testRouter

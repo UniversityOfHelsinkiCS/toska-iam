@@ -49,7 +49,9 @@ app.post('/', async (req, res) => {
     specialGroup.fullSisuAccess = await hasFullSisuAccess(userId)
   }
 
-  if (userId && iamGroups) User.upsert({ id: userId, iamGroups })
+  if (userId && iamGroups) {
+    await User.upsert({ id: userId, iamGroups })
+  }
 
   logger.info('IAM authentication', { userId, iamGroups, access })
 
@@ -131,7 +133,9 @@ app.get('/iam-groups', async (_req, res) => {
 app.post('/user-organisations', async (req, res) => {
   const { userId, iamGroups = [] } = req.body
 
-  if (userId && iamGroups) User.upsert({ id: userId, iamGroups })
+  if (userId && iamGroups) {
+    await User.upsert({ id: userId, iamGroups })
+  }
 
   const faculties = {}
   iamGroups.forEach((iam) => {
@@ -176,4 +180,7 @@ const start = async () => {
   })
 }
 
-start()
+start().catch((err) => {
+  logger.error('Failed to start application', err)
+  process.exit(1)
+})

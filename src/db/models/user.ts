@@ -21,5 +21,4 @@ User.init(
   { sequelize, modelName: 'user', underscored: true },
 )
 
-module.exports = User
 export default User

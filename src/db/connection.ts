@@ -51,5 +51,3 @@ export const connectToDatabase = async (attempt = 0) => {
 
   return null
 }
-
-module.exports = { connectToDatabase, sequelize }
