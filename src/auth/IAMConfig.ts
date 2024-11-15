@@ -511,23 +511,26 @@ const iamToFaculty = (iam) => {
   }
 }
 
-const relevantIAMs = []
-  .concat(Object.keys(joryMap))
-  .concat(Object.keys(kojoMap))
-  .concat(Object.values(kojoMap))
-  .concat(Object.keys(kosuFacultyMap))
-  .concat(Object.keys(dekaaniFacultyMap))
-  .concat(opetusVaradekaani)
-  .concat(doctoralIams)
-  .concat(Object.keys(doctoralSchoolMap))
-  .concat(universityWideGroups)
-  .concat(superAdminGroups)
-  .concat(adminGroups)
-  .concat(openUniGroups)
-  .concat(hyOneGroups)
-  .concat(employeeGroups)
-  .concat(oodikoneIams)
-  .concat(katselmusViewerIams)
+const relevantIAMs = new Set(
+  [
+    Object.keys(joryMap),
+    Object.keys(kojoMap),
+    Object.values(kojoMap),
+    Object.keys(kosuFacultyMap),
+    Object.keys(dekaaniFacultyMap),
+    opetusVaradekaani,
+    doctoralIams,
+    Object.keys(doctoralSchoolMap),
+    universityWideGroups,
+    superAdminGroups,
+    adminGroups,
+    openUniGroups,
+    hyOneGroups,
+    employeeGroups,
+    oodikoneIams,
+    katselmusViewerIams,
+  ].flat(),
+)
 
 const RELEVANT_ORGANISATION_CODES = [
   'H930', // Avoin yliopisto

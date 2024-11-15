@@ -39,9 +39,7 @@ app.get('/ping', (_req, res) => res.send('pong'))
 app.post('/', async (req, res) => {
   const { userId, iamGroups = [], getSisuAccess = false } = req.body
 
-  const relevantIamGroups = iamGroups.filter((iam) =>
-    relevantIAMs.includes(iam),
-  )
+  const relevantIamGroups = iamGroups.filter((iam) => relevantIAMs.has(iam))
 
   const { access, specialGroup } = getIAMRights(relevantIamGroups)
 
@@ -76,7 +74,7 @@ app.get('/all-access', async (_req, res) => {
   const users = await User.findAll()
 
   const usersWithAccess = users.map(({ dataValues: user }) => {
-    const iamGroups = user.iamGroups.filter((iam) => relevantIAMs.includes(iam))
+    const iamGroups = user.iamGroups.filter((iam) => relevantIAMs.has(iam))
 
     return {
       ...user,
@@ -107,9 +105,7 @@ app.post('/access-and-special-groups', async (req, res) => {
     users.map(({ dataValues: user }) => user),
     50,
     async (user) => {
-      const iamGroups = user.iamGroups.filter((iam) =>
-        relevantIAMs.includes(iam),
-      )
+      const iamGroups = user.iamGroups.filter((iam) => relevantIAMs.has(iam))
       const { access, specialGroup } = getIAMRights(iamGroups)
       specialGroup.fullSisuAccess = await hasFullSisuAccess(user.id)
 
@@ -153,7 +149,7 @@ app.get('/:id', async (req, res) => {
 
   if (!user) return res.sendStatus(404)
 
-  const iamGroups = user.iamGroups.filter((iam) => relevantIAMs.includes(iam))
+  const iamGroups = user.iamGroups.filter((iam) => relevantIAMs.has(iam))
 
   return res.send({
     ...user.dataValues,

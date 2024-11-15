@@ -6,13 +6,14 @@ describe('Chaos test', () => {
   it('User IAM endpoint should not crash', async () => {
     const getRandomIams = () => {
       const randomIams = []
+      const iamArray = [...relevantIAMs]
       for (let i = 0; i < 5 + Math.ceil(Math.random() * 10); i++) {
         // 50% are random strings
         if (Math.random() < 0.5) {
           randomIams.push(Math.random().toString(36).substring(2, 15))
         } else {
           const randomIam =
-            relevantIAMs[Math.floor(Math.random() * relevantIAMs.length)]
+            iamArray[Math.floor(Math.random() * iamArray.length)]
           randomIams.push(randomIam)
         }
       }
