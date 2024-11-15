@@ -368,6 +368,8 @@ const doctoralSchoolMap = {
   ],
 }
 
+const dekaani = 'hy-dekaanit'
+
 const opetusVaradekaani = 'hy-varadekaanit-opetus'
 
 const dekaaniFacultyMap = {
@@ -518,6 +520,7 @@ const relevantIAMs = new Set(
     Object.values(kojoMap),
     Object.keys(kosuFacultyMap),
     Object.keys(dekaaniFacultyMap),
+    dekaani,
     opetusVaradekaani,
     doctoralIams,
     Object.keys(doctoralSchoolMap),
