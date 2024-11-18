@@ -54,5 +54,5 @@ jobs:
         with:
           environment: production
           set_commits: 'skip'
-          sourcemaps: ./app
-          url_prefix: '~/app'
+          sourcemaps: './build'
+          url_prefix: '~/opt/app-root/src'

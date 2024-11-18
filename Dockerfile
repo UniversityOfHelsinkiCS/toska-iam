@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi9/nodejs-18-minimal AS build
+FROM registry.access.redhat.com/ubi9/nodejs-20-minimal AS build
 
 ENV TZ="Europe/Helsinki"
 
@@ -17,7 +17,7 @@ COPY src ./src
 RUN npm run build
 
 
-FROM registry.access.redhat.com/ubi9/nodejs-18-minimal
+FROM registry.access.redhat.com/ubi9/nodejs-20-minimal
 
 ENV TZ="Europe/Helsinki"
 
