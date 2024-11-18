@@ -10,7 +10,7 @@ WORKDIR /opt/app-root/src
 COPY package*.json ./
 COPY tsconfig.json ./
 
-RUN npm ci
+RUN npm ci --include=dev
 
 COPY src ./src
 
