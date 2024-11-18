@@ -29,7 +29,7 @@ WORKDIR /opt/app-root/src
 COPY --from=build /opt/app-root/src/package*.json ./
 COPY --from=build /opt/app-root/src/build ./build
 
-RUN npm ci
+RUN npm ci --omit=dev
 
 EXPOSE 3003
 
