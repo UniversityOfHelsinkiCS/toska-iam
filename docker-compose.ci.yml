@@ -1,5 +1,3 @@
-version: '3.5'
-
 services:
   app:
     build:
@@ -15,7 +13,7 @@ services:
     container_name: jami_dev
 
   db:
-    image: postgres:15-alpine
+    image: postgres:15.8
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=postgres
