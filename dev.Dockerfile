@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:18-alpine
 
 ENV TZ="Europe/Helsinki"
 
@@ -9,4 +9,4 @@ RUN npm i
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start:dev"]
+CMD ["node_modules/.bin/tsx", "watch", "--clear-screen=false", "src/index.ts"]
