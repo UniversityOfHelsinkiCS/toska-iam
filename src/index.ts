@@ -1,9 +1,9 @@
+import './util/sentry' // This must be imported before anything else
 import express from 'express'
 import * as Sentry from '@sentry/node'
 import { Op } from 'sequelize'
 
 import { PORT, inProduction } from './util/config'
-import { initializeSentry } from './util/sentry'
 import logger from './util/logger'
 
 import errorHandler from './middleware/errors'
@@ -23,12 +23,7 @@ import User from './db/models/user'
 import testRouter from './util/testRouter'
 import { processInBatches } from './util/processInBatches'
 
-initializeSentry()
-
 const app = express()
-
-app.use(Sentry.Handlers.requestHandler())
-app.use(Sentry.Handlers.tracingHandler())
 
 app.use(express.json())
 
@@ -161,7 +156,8 @@ if (!inProduction) {
   app.use(testRouter)
 }
 
-app.use(Sentry.Handlers.errorHandler())
+Sentry.setupExpressErrorHandler(app)
+
 app.use(errorHandler)
 
 const start = async () => {

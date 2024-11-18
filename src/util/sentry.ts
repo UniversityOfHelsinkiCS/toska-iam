@@ -1,12 +1,13 @@
 import * as Sentry from '@sentry/node'
-import '@sentry/tracing'
+import { nodeProfilingIntegration } from '@sentry/profiling-node'
+
 import { inProduction } from './config'
 
-export const initializeSentry = () => {
-  if (!inProduction) return
-
+if (inProduction) {
   Sentry.init({
     dsn: 'https://f67e2aa95d80df2823600b00544bf059@toska.cs.helsinki.fi/11',
+    integrations: [nodeProfilingIntegration()],
     tracesSampleRate: 1.0,
+    profilesSampleRate: 1.0,
   })
 }
