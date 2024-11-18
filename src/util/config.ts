@@ -5,6 +5,8 @@ export const PORT = process.env.PORT
 
 export const inProduction = process.env.NODE_ENV === 'production'
 
+export const inDevelopment = process.env.NODE_ENV === 'development'
+
 export const DATABASE_URL = process.env.DATABASE_URL
 
 export const importerUrl =

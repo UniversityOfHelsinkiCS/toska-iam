@@ -2,6 +2,9 @@ FROM registry.access.redhat.com/ubi9/nodejs-18-minimal AS build
 
 ENV TZ="Europe/Helsinki"
 
+ARG NODE_ENV
+ENV NODE_ENV=$NODE_ENV
+
 WORKDIR /opt/app-root/src
 
 COPY package*.json ./
@@ -18,7 +21,8 @@ FROM registry.access.redhat.com/ubi9/nodejs-18-minimal
 
 ENV TZ="Europe/Helsinki"
 
-ENV NODE_ENV=production
+ARG NODE_ENV
+ENV NODE_ENV=$NODE_ENV
 
 WORKDIR /opt/app-root/src
 
