@@ -160,19 +160,25 @@ Sentry.setupExpressErrorHandler(app)
 
 app.use(errorHandler)
 
-const start = async () => {
-  await connectToDatabase()
+connectToDatabase()
+  .then(() => {
+    logger.info('Connected to database')
 
-  app.listen(PORT, () => {
-    logger.info(
-      `Started on port ${PORT} with environment ${
-        inProduction ? 'production' : 'development'
-      }`,
-    )
+    const server = app.listen(PORT, () => {
+      logger.info(
+        `Started on port ${PORT} with environment ${
+          inProduction ? 'production' : 'development'
+        }`,
+      )
+    })
+
+    process.on('SIGTERM', () => {
+      server.close(() => {
+        logger.info('Server closed')
+      })
+    })
   })
-}
-
-start().catch((err) => {
-  logger.error('Failed to start application', err)
-  process.exit(1)
-})
+  .catch((err) => {
+    logger.error('Failed to start application', err)
+    process.exit(1)
+  })
