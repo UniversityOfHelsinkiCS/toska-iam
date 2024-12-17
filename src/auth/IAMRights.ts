@@ -13,7 +13,6 @@ import {
   kosuIamToFaculties,
   opetusVaradekaani,
   isStudyLeaderGroup,
-  isKatselmusViewer,
   dekaaniIamToFaculty,
 } from './IAMConfig'
 import { FACULTIES } from '../organisation/faculties'
@@ -121,35 +120,12 @@ const getKosu: AccessSpecialGroupFunction = (hyGroups) => {
 }
 
 /**
- * Needed for Oodikone
- * Grant katselmusViewer special group, which means that the user can see oodikone's
- * evaluationoverview which is linked in tilannekuvalomake
- * @returns katselmusViewer special group
- */
-const getKatselmusViewer: AccessSpecialGroupFunction = (hyGroups) => {
-  const katselmusViewer = hyGroups.some(isKatselmusViewer)
-
-  if (katselmusViewer) {
-    return { specialGroup: { katselmusViewer: true } }
-  }
-  return {}
-}
-
-/**
  * Get special groups based on IAM-groups
  */
 const getSpecialGroups: AccessSpecialGroupFunction = (hyGroups) => {
   let specialGroup = {}
 
-  ;[
-    getAdmin,
-    getSuperAdmin,
-    getOpenUni,
-    getHyOne,
-    getJory,
-    getKosu,
-    getKatselmusViewer,
-  ]
+  ;[getAdmin, getSuperAdmin, getOpenUni, getHyOne, getJory, getKosu]
     .map((f) => f(hyGroups))
     .forEach(({ specialGroup: newSpecialGroup }) => {
       specialGroup = { ...specialGroup, ...newSpecialGroup }

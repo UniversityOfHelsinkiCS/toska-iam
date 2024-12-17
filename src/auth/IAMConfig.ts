@@ -466,8 +466,6 @@ const isJoryIam = (iam) => joryGroups.includes(iam)
 
 const isKosuIam = (iam) => kosuGroups.includes(iam)
 
-const isKatselmusViewer = (iam) => katselmusViewerIams.includes(iam)
-
 const isUniversityWideIam = (iam) => universityWideGroups.includes(iam)
 
 const isDoctoralIam = (iam) => doctoralIams.includes(iam)
@@ -568,5 +566,4 @@ export {
   isStudyLeaderGroup,
   relevantIAMs,
   relevantOrganisations,
-  isKatselmusViewer,
 }
