@@ -11,7 +11,7 @@ export default [
     files: ['**/*.{js,ts}'],
   },
   {
-    ignores: ['vitest.config.ts', 'build/'],
+    ignores: ['vitest.config.mts', 'build/'],
   },
   {
     languageOptions: {
